@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Page</title>
+    <style>
+        .link-item {
+            margin-bottom: 10px;
+        }
+        .notification {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .already-exists {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>Links from Categories</h1>
+    <div id="categories">
+        {% for category, links in all_links.items() %}
+            <h2>{{ category }}</h2>
+            <ul>
+                {% for link in links %}
+                    <li>
+                        <!-- Blacklist Form -->
+                        <form action="/add_to_blacklist" method="post" class="blacklist-form">
+                            <input type="hidden" name="link" value="{{ link.link }}">
+                            <input type="hidden" name="date" value="{{ filename.split('.')[0].split('_')[2] }}">
+                            <button type="submit">Add to Blacklist</button>
+                        </form>
+                        <!-- Undo Form -->
+                        <form action="/undo_blacklist" method="post" class="undo-form">
+                            <button type="submit">Undo Add</button>
+                        </form>
+                        <a href="{{ link.link }}" target="_blank">
+                            {{ link.headline }} - {{ link.date }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+
+    <!-- Notification Div -->
+    <div id="notification" class="notification"></div>
+
+    <script>
+        const blacklistForms = document.querySelectorAll('.blacklist-form');
+        const undoForms = document.querySelectorAll('.undo-form');  // Add this line for undo form
+        const notification = document.getElementById('notification');
+
+        // Blacklist form handling
+        blacklistForms.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent page reload
+
+                const formData = new FormData(form);
+                const link = formData.get('link');
+                
+                console.log("Form submitted with link:", link);  // Log the form submission
+                
+                fetch('/add_to_blacklist', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Response from server:", data);  // Log the server response
+
+                    // Display appropriate notification message
+                    if (data.status === 'success') {
+                        notification.textContent = data.message;
+                        notification.className = 'notification success';
+                    } else if (data.status === 'already_exists') {
+                        notification.textContent = data.message;
+                        notification.className = 'notification already-exists';
+                    } else {
+                        notification.textContent = 'An error occurred. Please try again.';
+                        notification.className = 'notification error';
+                    }
+
+                    // Show the notification
+                    notification.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    notification.textContent = 'An error occurred. Please try again.';
+                    notification.className = 'notification error';
+                    notification.style.display = 'block';
+                });
+            });
+        });
+
+        // Undo blacklist form handling
+        undoForms.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent page reload
+
+                const formData = new FormData(form);
+                const link = formData.get('link');
+                
+                console.log("Undo form submitted with link:", link);  // Log the form submission
+                
+                fetch('/undo_blacklist', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Response from server:", data);  // Log the server response
+
+                    // Display appropriate notification message
+                    if (data.status === 'success') {
+                        notification.textContent = data.message;
+                        notification.className = 'notification success';
+                    } else {
+                        notification.textContent = 'An error occurred. Please try again.';
+                        notification.className = 'notification error';
+                    }
+
+                    // Show the notification
+                    notification.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    notification.textContent = 'An error occurred. Please try again.';
+                    notification.className = 'notification error';
+                    notification.style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

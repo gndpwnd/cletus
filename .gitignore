@@ -1,0 +1,13 @@
+public/
+resources/
+.hugo_build.lock
+**links**.json
+tmp_**.html
+**_tmp.html
+**tmp_html/
+**tmp_json/
+**venv/
+**pycache**
+**published.zip
+node_modules/
+package-lock.json

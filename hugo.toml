@@ -1,0 +1,104 @@
+baseURL = "https://00psfreebooks.github.io/cletus/"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Cletus's Blog"
+theme = "anubis2"
+disqusShortname = ""
+
+[pagination]
+pagerSize = 5
+
+
+[params.author]
+name = "Cletus"
+location = "Your Mom's House"
+
+[params]
+description = "Cletus's attempt at analyzing some information"
+dateFormat = "2006-01-02"
+paginationSinglePost = true
+
+colorTheme = "auto"
+colorThemeSwitcher = true
+
+readMore = false
+readNextPosts = 2
+copyCodeButton = true
+rssAsSocialIcon = true
+locale = "en-us"
+math = false # true: enable mathjax globally (default is false)
+toc = true
+
+# Graphcomment support
+graphcommentId = ""
+
+GiscusRepo = "Junyi-99/hugo-theme-anubis2"
+GiscusRepoId = "R_kgDOLEp76Q"
+GiscusCategory = "General"
+GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
+GiscusLazyLoad = false
+GiscusDataMapping = "pathname"
+
+customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
+
+social = [
+    { id = "github", url = "https://github.com/00psfreebooks/cletus" }
+]
+
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.main]]
+name = "Archive"
+identifier = "archive"
+url = "/posts/"
+weight = 4
+
+[languages]
+[languages.en]
+languageName = "English"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+author = "authors"
+
+[markup]
+defaultMarkdownHandler = 'goldmark'
+
+[markup.goldmark.renderer]
+unsafe = true # Enable unsafe mode to have a better experience
+
+[markup.highlight]
+anchorLineNos      = false
+codeFences         = true # tested with true and false. Both work.
+noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
+style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
+tabWidth           = 4
+
+[params.UmamiAnalytics]
+enabled = true
+dnt = false
+id = "d01ce82c-c8f4-4714-ba37-ba4899f2a885"                                            # Website ID
+datacache = false
+url = "https://umami.xtra.science/script.js"
+shareUrl = "https://umami.xtra.science/share/Fy0goUn0b9rrxxGe/hugo-theme-anubis2.netlify.app"
+
+[params.GoogleAnalytics]
+enabled = true
+gtag = "G-32F16X8HLF"

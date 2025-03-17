@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File List</title>
+</head>
+<body>
+    <h1>Select a JSON File</h1>
+    <div id="file-list">
+        {% for file in files %}
+            <form action="/links/{{ file }}" method="get">
+                <button type="submit">{{ file }}</button>
+            </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

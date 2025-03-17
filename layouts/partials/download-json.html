@@ -1,0 +1,52 @@
+<button onclick="downloadJSON()">Download Selected Articles</button>
+
+<script>
+    function downloadJSON() {
+	    // Create an empty object to hold the selected data
+	    let selectedData = {};
+
+	    // Get today's date in YYYY-MM-DD format
+	    let todayDate = new Date().toISOString().split('T')[0];
+
+	    // Extract category from the `<h1>` element
+	    let categoryElement = document.querySelector('h1.p-name.post-title');
+	    let categoryText = categoryElement ? categoryElement.textContent.split('-')[0].trim() : "Uncategorized";
+
+	    // Initialize the category inside the date object
+	    if (!selectedData[todayDate]) {
+	        selectedData[todayDate] = {};
+	    }
+	    if (!selectedData[todayDate][categoryText]) {
+	        selectedData[todayDate][categoryText] = {};
+	    }
+
+	    // Iterate through each checkbox to check if it is selected
+	    document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
+	        let articleId = checkbox.name; // Checkbox name is the article ID (e.g., "article_855")
+	        let articleUrl = checkbox.value; // The value of the checkbox is the URL of the article
+
+	        // Extract the headline and search query from the associated paragraph
+	        let paragraph = checkbox.closest('p');
+	        let allLinks = paragraph ? paragraph.querySelectorAll('a[href]') : [];
+	        let searchQuery = allLinks.length > 0 ? allLinks[0].getAttribute('href') : ''; // First <a> is the search link
+	        let headline = allLinks.length > 1 ? allLinks[1].textContent.trim() : 'No headline available'; // Second <a> is the headline
+
+	        // Construct the JSON object with the article details under the category
+	        selectedData[todayDate][categoryText][articleId] = {
+	            headline: headline,
+	            link: articleUrl,
+	            search: searchQuery
+	        };
+	    });
+
+	    // Convert the selected data to a JSON string
+	    let jsonString = JSON.stringify(selectedData, null, 4);
+
+	    // Trigger download
+	    let blob = new Blob([jsonString], { type: 'application/json' });
+	    let link = document.createElement('a');
+	    link.href = URL.createObjectURL(blob);
+	    link.download = `selected_articles_${todayDate}.json`; // Download with today's date
+	    link.click();
+	}
+</script>
