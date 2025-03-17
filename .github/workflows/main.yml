@@ -1,0 +1,103 @@
+name: Build and Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '45 9,21 * * *'  # 9:45 AM and 9:45 PM UTC every day (5:45 AM and 5:45 PM EST)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v2
+
+      - name: Update Theme
+        run: git submodule update --init --recursive
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Install TeX Live (for PDF generation)
+        run: sudo apt update && sudo apt install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
+
+      - name: Install Quarto
+        run: |
+          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.42/quarto-1.6.42-linux-amd64.deb
+          sudo dpkg -i quarto-1.6.42-linux-amd64.deb
+          sudo apt-get install -f  # To fix any missing dependencies
+          rm quarto-1.6.42-linux-amd64.deb
+
+
+      - name: Set Morning or Evening Variable
+        run: |
+          # Set the timezone to EST (or EDT during daylight savings)
+          HOUR_EST=$(TZ="America/New_York" date +"%H")
+          if [ "$HOUR_EST" -lt 12 ]; then
+            echo "MORNING_RUN=true" >> $GITHUB_ENV
+          else
+            echo "MORNING_RUN=false" >> $GITHUB_ENV
+          fi
+
+      - name: Download published branch
+        uses: wei/wget@v1
+        with:
+          args: https://github.com/00psfreebooks/cletus/archive/refs/heads/links.zip
+        continue-on-error: true
+
+      - name: Unzip published branch
+        run: |
+            unzip -q links.zip
+        continue-on-error: true
+
+      - name: Move links to content/posts/ dir 
+        run: |
+          mkdir -p content/posts/  # Ensure the content/posts/ directory exists
+          if [ -d "cletus-links" ]; then
+            mv cletus-links/*.md content/posts/  # Move .md files from the extracted folder
+          else
+            echo "Directory 'cletus-links' does not exist, skipping move."
+          fi
+
+      - name: Run get_links.py
+        run: python scripts/get_links.py  # Generates JSON files in tmp_json/
+        env:
+          MORNING_RUN: ${{ env.MORNING_RUN }}
+
+      - name: Cleanup Temporary Folders
+        run: rm -rf tmp_json tmp_html
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build Hugo Site
+        run: hugo --minify
+
+      - name: Deploy Hugo Site to Published Branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.BUILD_TOKEN }}
+          external_repository: 00psfreebooks/cletus
+          publish_dir: ./public
+          publish_branch: published
+
+      - name: Deploy posts to links branch to use as history
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.BUILD_TOKEN }}
+          external_repository: 00psfreebooks/cletus
+          publish_dir: ./content/posts/
+          publish_branch: links
