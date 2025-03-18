@@ -101,7 +101,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.BUILD_TOKEN }}
-          external_repository: 00psfreebooks/cletus
+          external_repository: gndpwnd/cletus
           publish_dir: ./public
           publish_branch: published
 
@@ -109,6 +109,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.BUILD_TOKEN }}
-          external_repository: 00psfreebooks/cletus
+          external_repository: gndpwnd/cletus
           publish_dir: ./content/posts/
           publish_branch: links
