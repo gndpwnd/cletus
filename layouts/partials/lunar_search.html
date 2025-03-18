@@ -1,0 +1,31 @@
+<!-- layouts/partials/search.html -->
+
+<form id="search-form">
+    <input type="text" id="search-query" placeholder="Search..." autocomplete="off">
+    <div id="search-results"></div>
+  </form>
+  
+  <script src="/js/lunr.min.js"></script>
+  <script>
+    var lunrIndex;
+    fetch('/lunr.json')
+      .then(response => response.json())
+      .then(function(data) {
+        lunrIndex = lunr.Index.load(data);
+      });
+  
+    document.getElementById('search-query').addEventListener('input', function(event) {
+      var query = event.target.value;
+      var results = lunrIndex.search(query);
+      var resultsDiv = document.getElementById('search-results');
+      resultsDiv.innerHTML = '';  // Clear previous results
+  
+      results.forEach(function(result) {
+        var item = document.createElement('div');
+        item.classList.add('search-result');
+        item.innerHTML = `<a href="${result.ref}">${result.ref}</a>`;  // Assuming `result.ref` holds the URL
+        resultsDiv.appendChild(item);
+      });
+    });
+  </script>
+  

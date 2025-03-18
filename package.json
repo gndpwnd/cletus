@@ -1,0 +1,11 @@
+{
+  "name": "your-hugo-site",
+  "version": "1.0.0",
+  "scripts": {
+    "index": "hugo-lunr -i \"content/**\" -o public/lunr.json"
+  },
+  "dependencies": {
+    "hugo-lunr": "^0.0.4",
+    "lunr": "^2.3.8"
+  }
+}
