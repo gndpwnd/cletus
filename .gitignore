@@ -11,3 +11,5 @@ tmp_**.html
 **published.zip
 node_modules/
 package-lock.json
+content/posts/eve**
+content/posts/mor**
