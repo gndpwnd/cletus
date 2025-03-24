@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2025-03-23 - EVE"
-date = "2025-03-23"
+title = "US Intelligence - 2025-03-24 - MOR"
+date = "2025-03-24"
 description = "US Intelligence news for today"
 tags = [
     "US Intelligence",
