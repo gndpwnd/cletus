@@ -8,7 +8,6 @@ disqusShortname = ""
 [pagination]
 pagerSize = 5
 
-
 [params.author]
 name = "Cletus"
 location = "Your Mom's House"
@@ -18,32 +17,38 @@ description = "Cletus's attempt at analyzing some information"
 dateFormat = "2006-01-02"
 paginationSinglePost = true
 
-colorTheme = "auto"
-colorThemeSwitcher = true
-
+# Deprecated params (moved to params.anubis2)
 readMore = false
 readNextPosts = 2
-copyCodeButton = true
 rssAsSocialIcon = true
 locale = "en-us"
-math = false # true: enable mathjax globally (default is false)
 toc = true
 
-# Graphcomment support
+# Graphcomment support (deprecated, moved to params.anubis2)
 graphcommentId = ""
 
-GiscusRepo = "Junyi-99/hugo-theme-anubis2"
-GiscusRepoId = "R_kgDOLEp76Q"
-GiscusCategory = "General"
-GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
-GiscusLazyLoad = false
-GiscusDataMapping = "pathname"
+# New params.anubis2 section (replaces deprecated params)
+[params.anubis2]
+enableColorThemeSwitcher = true  # Replaces params.colorThemeSwitcher
+colorTheme = "auto"             # Replaces params.colorTheme
+enableCopyCodeButton = true      # Replaces params.copyCodeButton
+enableMathGlobally = false       # Replaces params.math
+customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]  # Replaces params.customCSS
 
-customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
+# Social links (new format)
+# Social links (correct format for Anubis2)
+[[params.anubis2.social]]
+id = "github"  # must match the icon names the theme supports
+url = "https://github.com/00psfreebooks/cletus"
+title = "GitHub"  # optional accessibility title
 
-social = [
-    { id = "github", url = "https://github.com/00psfreebooks/cletus" }
-]
+# Replace with the correct format (check theme docs):
+[params.giscus]
+enable = true
+repo = "Junyi-99/hugo-theme-anubis2"
+repoId = "R_kgDOLEp76Q"
+category = "General"
+categoryId = "DIC_kwDOLEp76c4CcbPS"
 
 [[menu.main]]
 identifier = "home"
@@ -82,23 +87,23 @@ author = "authors"
 defaultMarkdownHandler = 'goldmark'
 
 [markup.goldmark.renderer]
-unsafe = true # Enable unsafe mode to have a better experience
+unsafe = true
 
 [markup.highlight]
-anchorLineNos      = false
-codeFences         = true # tested with true and false. Both work.
-noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
-style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
-tabWidth           = 4
+anchorLineNos = false
+codeFences = true
+noClasses = true
+style = 'catppuccin-frappe'
+tabWidth = 4
 
-[params.UmamiAnalytics]
+[params.umamiAnalytics]
 enabled = true
 dnt = false
-id = "d01ce82c-c8f4-4714-ba37-ba4899f2a885"                                            # Website ID
+id = "d01ce82c-c8f4-4714-ba37-ba4899f2a885"
 datacache = false
 url = "https://umami.xtra.science/script.js"
 shareUrl = "https://umami.xtra.science/share/Fy0goUn0b9rrxxGe/hugo-theme-anubis2.netlify.app"
 
-[params.GoogleAnalytics]
+[params.googleAnalytics]
 enabled = true
 gtag = "G-32F16X8HLF"
