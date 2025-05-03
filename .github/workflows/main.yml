@@ -36,17 +36,6 @@ jobs:
       - name: Install Node Dependencies
         run: npm install
 
-      - name: Install TeX Live (for PDF generation)
-        run: sudo apt update && sudo apt install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
-
-      - name: Install Quarto
-        run: |
-          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.42/quarto-1.6.42-linux-amd64.deb
-          sudo dpkg -i quarto-1.6.42-linux-amd64.deb
-          sudo apt-get install -f  # To fix any missing dependencies
-          rm quarto-1.6.42-linux-amd64.deb
-
-
       - name: Set Morning or Evening Variable
         run: |
           # Set the timezone to EST (or EDT during daylight savings)
