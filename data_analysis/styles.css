@@ -1,0 +1,193 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+h1 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.upload-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+#fileInput {
+    display: block;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.file-list {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.file-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.file-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-list li:last-child {
+    border-bottom: none;
+}
+
+.file-list button {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.file-list button:hover {
+    background-color: #c0392b;
+}
+
+.markdown-output {
+    display: none;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.markdown-content {
+    position: relative;
+}
+
+#markdown-output {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.markdown-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+#copy-button {
+    /* Remove absolute positioning */
+    position: static;
+    background: #27ae60;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#copy-button:hover {
+    background: #219653;
+}
+
+#download-button {
+    /* Remove absolute positioning */
+    position: static;
+    background: #3498db;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#download-button:hover {
+    background: #2980b9;
+}
+
+#pdf-button {
+    background: #e74c3c;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#pdf-button:hover {
+    background: #c0392b;
+}
+
+@media (max-width: 600px) {
+    .button-group {
+        flex-direction: column;
+    }
+    
+    button {
+        width: 100%;
+    }
+    
+    .markdown-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
