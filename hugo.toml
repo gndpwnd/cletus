@@ -77,7 +77,7 @@ weight = 4
 [[menu.main]]
 identifier = "data"
 name = "Data"
-url = "/posts/data_handler/"
+url = "/data_analysis/"
 weight = 5
 
 [languages]
