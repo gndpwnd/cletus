@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2025-05-06 - EVE"
-date = "2025-05-06"
+title = "US Intelligence - 2025-05-07 - MOR"
+date = "2025-05-07"
 description = "US Intelligence news for today"
 tags = [
     "US Intelligence",
@@ -109,6 +109,8 @@ tags = [
 <input type='checkbox' name='article_47' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/alcohol-tobacco/contraband-cigarette-trafficking-act' /> 47 - <a href='https://www.google.com/search?q=www.nsa.gov+Contraband+Cigarette+Trafficking+Act+%28CCTA%29' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/alcohol-tobacco/contraband-cigarette-trafficking-act' target='_blank' rel='noopener noreferrer'>Contraband Cigarette Trafficking Act (CCTA)</a><br>
 
 <input type='checkbox' name='article_48' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/alcohol-tobacco/contraband-cigarette-trafficking-act/contraband-cigarette-trafficking-act-ccta-reporting-compliance-and-tax-requirements' /> 48 - <a href='https://www.google.com/search?q=www.nsa.gov+CCTA+Reporting%2C+Compliance+and+Tax+Requirements' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/alcohol-tobacco/contraband-cigarette-trafficking-act/contraband-cigarette-trafficking-act-ccta-reporting-compliance-and-tax-requirements' target='_blank' rel='noopener noreferrer'>CCTA Reporting, Compliance and Tax Requirements</a><br>
+
+<input type='checkbox' name='article_49' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/press-releases/atf-louisville-host-press-conference-combatting-firearms-trafficking-to-mexico' /> 49 - <a href='https://www.google.com/search?q=www.nsa.gov+ATF+Louisville+host+press+conference+on+combatting+firearms+trafficking+to+Mexico' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/press-releases/atf-louisville-host-press-conference-combatting-firearms-trafficking-to-mexico' target='_blank' rel='noopener noreferrer'>ATF Louisville host press conference on combatting firearms trafficking to Mexico</a><br>
 
 </details>
 
