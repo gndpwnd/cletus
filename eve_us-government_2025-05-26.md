@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Government - 2025-05-26 - MOR"
+title = "US Government - 2025-05-26 - EVE"
 date = "2025-05-26"
 description = "US Government news for today"
 tags = [
