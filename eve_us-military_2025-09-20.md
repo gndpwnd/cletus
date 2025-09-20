@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Military - 2025-09-20 - MOR"
+title = "US Military - 2025-09-20 - EVE"
 date = "2025-09-20"
 description = "US Military news for today"
 tags = [
