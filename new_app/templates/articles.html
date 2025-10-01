@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Articles - Cletus News Aggregator{% endblock %}
+{% block nav_articles %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Articles</h1>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-section">
+        <div class="filter-group">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search headlines or sources..." 
+                class="filter-input"
+            >
+        </div>
+        
+        <div class="filter-group">
+            <select id="category-filter" class="filter-select">
+                <option value="">All Categories</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <input 
+                type="text" 
+                id="source-filter" 
+                placeholder="Filter by source..." 
+                class="filter-input"
+            >
+        </div>
+        
+        <div class="filter-group">
+            <button onclick="loadArticles()" class="btn btn-primary">Apply Filters</button>
+            <button onclick="clearFilters()" class="btn btn-secondary">Clear</button>
+        </div>
+    </div>
+
+    <!-- Articles List -->
+    <div class="content-section">
+        <div id="articles-list" class="articles-container">
+            <p class="text-muted">Loading articles...</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button onclick="prevPage()" class="btn btn-secondary" id="prev-btn">Previous</button>
+            <span id="page-info" class="page-info">Page 1</span>
+            <button onclick="nextPage()" class="btn btn-secondary" id="next-btn">Next</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', path='js/articles.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis - Cletus News Aggregator{% endblock %}
+{% block nav_analysis %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Article Analysis</h1>
+    </div>
+
+    <!-- Analysis Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="trending" onclick="switchTab('trending')">Trending Topics</button>
+        <button class="tab-btn" data-tab="duplicates" onclick="switchTab('duplicates')">Duplicates</button>
+        <button class="tab-btn" data-tab="priority" onclick="switchTab('priority')">Priority Articles</button>
+    </div>
+
+    <!-- Trending Topics Tab -->
+    <div id="trending-tab" class="tab-content active">
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Trending Topics</h2>
+                <button onclick="loadTrending()" class="btn btn-secondary">Refresh</button>
+            </div>
+            <div id="trending-content" class="analysis-content">
+                <p class="text-muted">Loading trending topics...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Duplicates Tab -->
+    <div id="duplicates-tab" class="tab-content">
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Duplicate Article Groups</h2>
+                <button onclick="loadDuplicates()" class="btn btn-secondary">Detect Duplicates</button>
+            </div>
+            <div id="duplicates-content" class="analysis-content">
+                <p class="text-muted">Click "Detect Duplicates" to find similar articles</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Priority Tab -->
+    <div id="priority-tab" class="tab-content">
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Prioritized Articles</h2>
+                <button onclick="loadPriority()" class="btn btn-secondary">Calculate Priority</button>
+            </div>
+            <div id="priority-content" class="analysis-content">
+                <p class="text-muted">Click "Calculate Priority" to score articles</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', path='js/analysis.js') }}"></script>
+{% endblock %}

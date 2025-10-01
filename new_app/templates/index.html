@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Cletus News Aggregator{% endblock %}
+{% block nav_dashboard %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Dashboard</h1>
+        <div class="header-actions">
+            <button onclick="checkHealth()" class="btn btn-secondary">Check Health</button>
+            <button onclick="syncBlacklist()" class="btn btn-secondary">Sync Blacklist</button>
+        </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total Articles</div>
+            <div class="stat-value" id="total-articles">-</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Articles Today</div>
+            <div class="stat-value" id="articles-today">-</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Selected Articles</div>
+            <div class="stat-value" id="selected-articles">-</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Scheduler Status</div>
+            <div class="stat-value" id="scheduler-status">-</div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="content-section">
+        <h2>Recent Scraping Sessions</h2>
+        <div id="recent-sessions" class="sessions-list">
+            <p class="text-muted">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="content-section">
+        <h2>Quick Actions</h2>
+        <div class="action-buttons">
+            <a href="/scraper" class="btn btn-primary">Start Manual Scrape</a>
+            <a href="/articles" class="btn btn-secondary">View All Articles</a>
+            <a href="/analysis" class="btn btn-secondary">Run Analysis</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', path='js/dashboard.js') }}"></script>
+{% endblock %}

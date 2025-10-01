@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Blacklist - Cletus News Aggregator{% endblock %}
+{% block nav_blacklist %}active{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>URL Blacklist</h1>
+    </div>
+
+    <!-- Add to Blacklist -->
+    <div class="content-section">
+        <h2>Add URL Pattern</h2>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="blacklist-pattern">URL Pattern:</label>
+                <input 
+                    type="text" 
+                    id="blacklist-pattern" 
+                    placeholder="https://example.com/path/" 
+                    class="form-input"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="blacklist-reason">Reason (optional):</label>
+                <input 
+                    type="text" 
+                    id="blacklist-reason" 
+                    placeholder="Why is this being blacklisted?" 
+                    class="form-input"
+                >
+            </div>
+            
+            <button onclick="addToBlacklist()" class="btn btn-primary">Add to Blacklist</button>
+        </div>
+    </div>
+
+    <!-- Blacklist Management -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2>Blacklisted Patterns</h2>
+            <button onclick="exportBlacklist()" class="btn btn-secondary">Export to JSON</button>
+        </div>
+        
+        <div id="blacklist-list" class="blacklist-container">
+            <p class="text-muted">Loading blacklist...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', path='js/blacklist.js') }}"></script>
+{% endblock %}
