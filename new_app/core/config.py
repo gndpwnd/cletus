@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "sqlite+aiosqlite:///./cletus.db"
     
     # Scraping
+    SCRAPE_COOLDOWN_MINUTES: int = 5    
     SCRAPING_TIMEOUT: int = 10
     SCRAPING_MAX_RETRIES: int = 3
     SCRAPING_DELAY: float = 1.0

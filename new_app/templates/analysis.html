@@ -1,3 +1,4 @@
+<!-- Update templates/analysis.html -->
 {% extends "base.html" %}
 
 {% block title %}Analysis - Cletus News Aggregator{% endblock %}
@@ -6,37 +7,65 @@
 {% block content %}
 <div class="container">
     <div class="page-header">
-        <h1>Article Analysis</h1>
+        <h1>Trending Keywords</h1>
+        <p class="page-description">
+            Click any keyword to search for related articles
+        </p>
     </div>
 
-    <!-- Analysis Tabs -->
+    <!-- Timeframe Tabs -->
     <div class="tabs">
-        <button class="tab-btn active" data-tab="trending" onclick="switchTab('trending')">Trending Topics</button>
-        <button class="tab-btn" data-tab="duplicates" onclick="switchTab('duplicates')">Duplicates</button>
+        <button class="tab-btn active" data-tab="24h" onclick="switchTimeframe('24h')">Last 24 Hours</button>
+        <button class="tab-btn" data-tab="48h" onclick="switchTimeframe('48h')">Last 48 Hours</button>
+        <button class="tab-btn" data-tab="7d" onclick="switchTimeframe('7d')">Last 7 Days</button>
+        <button class="tab-btn" data-tab="30d" onclick="switchTimeframe('30d')">Last 30 Days</button>
     </div>
 
-    <!-- Trending Topics Tab -->
-    <div id="trending-tab" class="tab-content active">
+    <!-- Content for each timeframe -->
+    <div id="24h-tab" class="tab-content active">
         <div class="content-section">
             <div class="section-header">
-                <h2>Trending Topics (Last 24 Hours)</h2>
-                <button onclick="loadTrending()" class="btn btn-secondary">Refresh</button>
+                <h2>Trending Keywords - Last 24 Hours</h2>
+                <button onclick="loadTrendingKeywords()" class="btn btn-secondary">Refresh All</button>
             </div>
-            <div id="trending-content" class="analysis-content">
-                <p class="text-muted">Loading trending topics...</p>
+            <div id="24h-content" class="keywords-content">
+                <p class="text-muted">Loading trending keywords...</p>
             </div>
         </div>
     </div>
 
-    <!-- Duplicates Tab -->
-    <div id="duplicates-tab" class="tab-content">
+    <div id="48h-tab" class="tab-content">
         <div class="content-section">
             <div class="section-header">
-                <h2>Duplicate Article Groups</h2>
-                <button onclick="loadDuplicates()" class="btn btn-secondary">Detect Duplicates</button>
+                <h2>Trending Keywords - Last 48 Hours</h2>
+                <button onclick="loadTrendingKeywords()" class="btn btn-secondary">Refresh All</button>
             </div>
-            <div id="duplicates-content" class="analysis-content">
-                <p class="text-muted">Click "Detect Duplicates" to find similar articles</p>
+            <div id="48h-content" class="keywords-content">
+                <p class="text-muted">Click "Refresh All" to load data</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="7d-tab" class="tab-content">
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Trending Keywords - Last 7 Days</h2>
+                <button onclick="loadTrendingKeywords()" class="btn btn-secondary">Refresh All</button>
+            </div>
+            <div id="7d-content" class="keywords-content">
+                <p class="text-muted">Click "Refresh All" to load data</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="30d-tab" class="tab-content">
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Trending Keywords - Last 30 Days</h2>
+                <button onclick="loadTrendingKeywords()" class="btn btn-secondary">Refresh All</button>
+            </div>
+            <div id="30d-content" class="keywords-content">
+                <p class="text-muted">Click "Refresh All" to load data</p>
             </div>
         </div>
     </div>

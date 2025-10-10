@@ -54,6 +54,23 @@ async def get_trending_topics(
         "time_window_hours": hours
     }
 
+# Update api/analysis.py - Add new endpoint
+@router.get("/trending-keywords")
+async def get_trending_keywords_by_timeframe(
+    min_articles: int = Query(3, ge=2, le=20),
+    db: AsyncSession = Depends(get_db)
+):
+    """Get trending keywords organized by multiple timeframes"""
+    analyzer = AnalysisService(db)
+    trending_data = await analyzer.get_trending_keywords_by_timeframe(
+        min_articles=min_articles
+    )
+    
+    return {
+        "trending_keywords": trending_data,
+        "timeframes": ["24h", "48h", "7d", "30d"]
+    }
+    
 @router.post("/prioritize")
 async def prioritize_articles(
     category: Optional[str] = None,

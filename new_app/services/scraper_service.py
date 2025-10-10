@@ -1,6 +1,6 @@
 """
 app/services/scraper_service.py
-Web scraping service with duplicate detection and appearance tracking
+Web scraping service with comprehensive session tracking
 """
 import asyncio
 import aiohttp
@@ -13,7 +13,7 @@ from typing import List, Optional
 import urllib.parse
 import time
 
-from models.models import Article, Blacklist, ScrapeLog
+from models.models import Article, Blacklist, ScrapeLog, ScrapeSession
 from core.config import settings
 from core.sources import LINK_DICTIONARIES
 
@@ -29,6 +29,13 @@ class ScraperService:
         self.db = db
         self.blacklist_cache = None
         self.blacklist_cache_time = None
+        self.session_stats = {
+            'new_articles': 0,
+            'updated_articles': 0,
+            'total_sources': 0,
+            'completed_sources': 0,
+            'failed_sources': 0
+        }
     
     async def _load_blacklist(self):
         """Load active blacklist patterns into cache"""
@@ -136,7 +143,8 @@ class ScraperService:
                 log.duration_seconds = time.time() - start_time
                 self.db.add(log)
                 await self.db.commit()
-                return {"status": "timeout", "articles": 0}
+                self.session_stats['failed_sources'] += 1
+                return {"status": "timeout", "new": 0, "updated": 0}
             
             articles_data = self._extract_links(html, base_url, source_name, blacklist)
             
@@ -172,13 +180,18 @@ class ScraperService:
             
             log.status = "success"
             log.articles_found = articles_saved
+            log.articles_updated = articles_updated
             log.duration_seconds = time.time() - start_time
             self.db.add(log)
             await self.db.commit()
             
+            self.session_stats['new_articles'] += articles_saved
+            self.session_stats['updated_articles'] += articles_updated
+            self.session_stats['completed_sources'] += 1
+            
             return {
                 "status": "success", 
-                "articles": articles_saved,
+                "new": articles_saved,
                 "updated": articles_updated
             }
             
@@ -188,33 +201,113 @@ class ScraperService:
             log.duration_seconds = time.time() - start_time
             self.db.add(log)
             await self.db.commit()
-            return {"status": "error", "articles": 0, "error": str(e)}
+            self.session_stats['failed_sources'] += 1
+            return {"status": "error", "new": 0, "updated": 0, "error": str(e)}
     
-    async def run_scrape_session(self, session_id: str, 
+    async def run_scrape_session(self, session_id: str, session_type: str,
                                  categories: Optional[List[str]] = None,
                                  sources: Optional[List[str]] = None):
-        """Run a complete scraping session"""
+        """Run a complete scraping session with comprehensive tracking"""
+        session_start = time.time()
+        
+        # Reset session stats
+        self.session_stats = {
+            'new_articles': 0,
+            'updated_articles': 0,
+            'total_sources': 0,
+            'completed_sources': 0,
+            'failed_sources': 0
+        }
+        
+        # Determine categories to scrape
         if categories:
             cats_to_scrape = {k: v for k, v in LINK_DICTIONARIES.items() if k in categories}
         else:
             cats_to_scrape = LINK_DICTIONARIES
         
-        async with aiohttp.ClientSession() as session:
-            for category, sources_dict in cats_to_scrape.items():
-                if sources:
-                    sources_dict = {k: v for k, v in sources_dict.items() if k in sources}
-                
-                for source_name, base_url in sources_dict.items():
-                    print(f"Scraping {source_name} from {category}...")
-                    result = await self.scrape_source(
-                        source_name=source_name,
-                        base_url=base_url,
-                        category=category,
-                        session_id=session_id,
-                        session=session
-                    )
-                    print(f"  -> {result['status']}: {result.get('articles', 0)} new, {result.get('updated', 0)} updated")
-                    
-                    await asyncio.sleep(settings.SCRAPING_DELAY)
+        # Create session record
+        scrape_session = ScrapeSession(
+            session_id=session_id,
+            session_type=session_type,
+            status="in_progress"
+        )
+        scrape_session.set_categories(list(cats_to_scrape.keys()))
         
-        print(f"Scraping session {session_id} completed")
+        # Count total sources
+        total_sources = 0
+        for sources_dict in cats_to_scrape.values():
+            if sources:
+                total_sources += len([k for k in sources_dict.keys() if k in sources])
+            else:
+                total_sources += len(sources_dict)
+        
+        scrape_session.total_sources = total_sources
+        self.session_stats['total_sources'] = total_sources
+        
+        self.db.add(scrape_session)
+        await self.db.commit()
+        
+        print(f"\n{'='*60}")
+        print(f"Starting scrape session: {session_id}")
+        print(f"Type: {session_type}")
+        print(f"Categories: {', '.join(cats_to_scrape.keys())}")
+        print(f"Total sources: {total_sources}")
+        print(f"{'='*60}\n")
+        
+        try:
+            async with aiohttp.ClientSession() as session:
+                for category, sources_dict in cats_to_scrape.items():
+                    if sources:
+                        sources_dict = {k: v for k, v in sources_dict.items() if k in sources}
+                    
+                    print(f"\n[{category}] Scraping {len(sources_dict)} sources...")
+                    
+                    for source_name, base_url in sources_dict.items():
+                        print(f"  → {source_name}...", end=" ")
+                        result = await self.scrape_source(
+                            source_name=source_name,
+                            base_url=base_url,
+                            category=category,
+                            session_id=session_id,
+                            session=session
+                        )
+                        
+                        status_icon = "✓" if result['status'] == 'success' else "✗"
+                        print(f"{status_icon} {result['status']}: {result['new']} new, {result['updated']} updated")
+                        
+                        # Update session progress
+                        await self.db.execute(
+                            select(ScrapeSession).where(ScrapeSession.session_id == session_id)
+                        )
+                        await self.db.refresh(scrape_session)
+                        scrape_session.completed_sources = self.session_stats['completed_sources']
+                        scrape_session.failed_sources = self.session_stats['failed_sources']
+                        scrape_session.new_articles = self.session_stats['new_articles']
+                        scrape_session.updated_articles = self.session_stats['updated_articles']
+                        scrape_session.total_articles_found = self.session_stats['new_articles']
+                        await self.db.commit()
+                        
+                        await asyncio.sleep(settings.SCRAPING_DELAY)
+            
+            # Mark session as completed
+            scrape_session.status = "completed"
+            scrape_session.end_time = datetime.now()
+            scrape_session.duration_seconds = time.time() - session_start
+            await self.db.commit()
+            
+            print(f"\n{'='*60}")
+            print(f"Session {session_id} completed!")
+            print(f"Duration: {scrape_session.duration_seconds:.1f}s")
+            print(f"New articles: {self.session_stats['new_articles']}")
+            print(f"Updated articles: {self.session_stats['updated_articles']}")
+            print(f"Sources completed: {self.session_stats['completed_sources']}/{total_sources}")
+            print(f"Sources failed: {self.session_stats['failed_sources']}")
+            print(f"{'='*60}\n")
+            
+        except Exception as e:
+            print(f"\n✗ Session {session_id} failed: {e}")
+            scrape_session.status = "error"
+            scrape_session.error_message = str(e)
+            scrape_session.end_time = datetime.now()
+            scrape_session.duration_seconds = time.time() - session_start
+            await self.db.commit()

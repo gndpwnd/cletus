@@ -1,4 +1,4 @@
-// static/js/articles.js - Articles page with infinite scroll
+// static/js/articles.js - Articles page with server-side search and infinite scroll
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeArticlesPage();
@@ -11,11 +11,24 @@ let hasMore = true;
 let currentSkip = 0;
 const LOAD_LIMIT = 50;
 let currentFilters = {};
+let searchTimeout;
 
+// Add to static/js/articles.js - in initializeArticlesPage() function
 function initializeArticlesPage() {
     setupFilterForm();
     loadInitialArticles();
     setupInfiniteScroll();
+    
+    // NEW: Check for URL parameters to auto-populate search
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    if (searchParam) {
+        document.getElementById('search-input').value = searchParam;
+        // Trigger search after a short delay to ensure everything is loaded
+        setTimeout(() => {
+            performServerSearch(searchParam);
+        }, 100);
+    }
 }
 
 async function loadInitialArticles() {
@@ -39,14 +52,17 @@ async function loadMoreArticles() {
     showLoadingIndicator();
     
     try {
-        const queryString = new URLSearchParams({
+        const params = new URLSearchParams({
             limit: LOAD_LIMIT,
-            skip: currentSkip,
-            category: currentFilters.category || '',
-            source: currentFilters.source || ''
-        }).toString();
+            skip: currentSkip
+        });
         
-        const response = await fetch(`/api/articles/?${queryString}`);
+        // Add filters
+        if (currentFilters.category) params.append('category', currentFilters.category);
+        if (currentFilters.source) params.append('source', currentFilters.source);
+        if (currentFilters.search) params.append('search', currentFilters.search);
+        
+        const response = await fetch(`/api/articles/?${params.toString()}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -56,8 +72,6 @@ async function loadMoreArticles() {
         if (data.articles && data.articles.length > 0) {
             appendArticles(data.articles);
             currentSkip += data.articles.length;
-            
-            // Check if there are more articles to load
             hasMore = currentSkip < data.total;
         } else {
             hasMore = false;
@@ -227,7 +241,9 @@ function updateArticleCount(total) {
             listEl.insertBefore(countEl, listEl.querySelector('#articles-table-container'));
         }
     }
-    countEl.textContent = `Showing ${currentArticles.length} of ${total} articles`;
+    
+    const searchInfo = currentFilters.search ? ` matching "${currentFilters.search}"` : '';
+    countEl.textContent = `Showing ${currentArticles.length} of ${total} articles${searchInfo}`;
 }
 
 function generateSearchUrl(headline) {
@@ -358,73 +374,61 @@ function setupFilterForm() {
     const searchInput = document.getElementById('search-input');
     if (!searchInput) return;
     
+    // Clear existing event listeners
     const newSearchInput = searchInput.cloneNode(true);
     searchInput.parentNode.replaceChild(newSearchInput, searchInput);
     
-    let searchTimeout;
+    // Debounced search - triggers server-side search
     newSearchInput.addEventListener('input', function(e) {
         clearTimeout(searchTimeout);
+        const searchTerm = e.target.value.trim();
+        
         searchTimeout = setTimeout(() => {
-            const searchTerm = e.target.value.trim().toLowerCase();
-            filterArticlesLocally(searchTerm);
-        }, 300);
+            performServerSearch(searchTerm);
+        }, 500); // Wait 500ms after user stops typing
     });
     
+    // Immediate search on Enter key
     newSearchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            const searchTerm = e.target.value.trim().toLowerCase();
-            filterArticlesLocally(searchTerm);
+            clearTimeout(searchTimeout);
+            const searchTerm = e.target.value.trim();
+            performServerSearch(searchTerm);
         }
     });
 }
 
-function filterArticlesLocally(searchTerm) {
-    const rows = document.querySelectorAll('.article-row');
-    let visibleCount = 0;
+function performServerSearch(searchTerm) {
+    // Update filters with search term
+    currentFilters.search = searchTerm || undefined;
     
-    rows.forEach(row => {
-        const titleCell = row.querySelector('.title-col');
-        if (!titleCell) return;
-        
-        const title = titleCell.textContent.toLowerCase();
-        
-        if (!searchTerm || title.includes(searchTerm)) {
-            row.style.display = '';
-            visibleCount++;
-        } else {
-            row.style.display = 'none';
-        }
-    });
-    
-    const tbody = document.getElementById('articles-table-body');
-    const existingMsg = tbody?.querySelector('.no-results-row');
-    
-    if (visibleCount === 0 && searchTerm && tbody) {
-        if (!existingMsg) {
-            const noResultsRow = document.createElement('tr');
-            noResultsRow.className = 'no-results-row';
-            noResultsRow.innerHTML = '<td colspan="7" style="text-align: center; padding: 20px;">No articles match your search</td>';
-            tbody.appendChild(noResultsRow);
-        }
-    } else if (existingMsg) {
-        existingMsg.remove();
-    }
+    // Reset and reload articles from server
+    selectedArticles.clear();
+    loadInitialArticles();
 }
 
 function clearFilters() {
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.value = '';
-        filterArticlesLocally('');
     }
+    
+    currentFilters = {};
+    selectedArticles.clear();
+    loadInitialArticles();
 }
 
 function applyFilters() {
     const category = document.getElementById('category-filter')?.value;
     const source = document.getElementById('source-filter')?.value.trim();
+    const search = document.getElementById('search-input')?.value.trim();
     
-    currentFilters = { category, source };
+    currentFilters = {};
+    if (category) currentFilters.category = category;
+    if (source) currentFilters.source = source;
+    if (search) currentFilters.search = search;
+    
     selectedArticles.clear();
     loadInitialArticles();
 }

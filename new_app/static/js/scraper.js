@@ -1,4 +1,4 @@
-// static/js/scraper.js - Enhanced with real-time status updates
+// static/js/scraper.js - Fixed cooldown calculation and enhanced progress display
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeScraperPage();
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let activeSessionId = null;
 let statusPollInterval = null;
+let cooldownCheckInterval = null;
 let ws = null;
 
 function initializeScraperPage() {
@@ -13,6 +14,8 @@ function initializeScraperPage() {
     loadCategories();
     setupScraperControls();
     loadScrapeHistory();
+    checkCooldownStatus(); // Check cooldown immediately
+    startCooldownMonitoring(); // Monitor cooldown status
 }
 
 function setupWebSocket() {
@@ -42,14 +45,88 @@ function setupWebSocket() {
 
 function handleWebSocketMessage(data) {
     if (data.type === 'scrape_update' && data.session_id === activeSessionId) {
-        // Update scrape status in real-time
         updateScrapeStatusDisplay(data.status);
     }
     
     if (data.type === 'database_update' && data.changes.articles) {
-        // Reload history when scrape completes
         loadScrapeHistory();
+        checkCooldownStatus(); // Refresh cooldown after scrape completes
     }
+}
+
+async function checkCooldownStatus() {
+    try {
+        const response = await fetch('/api/scraper/cooldown-status');
+        const data = await response.json();
+        
+        updateCooldownUI(data);
+    } catch (err) {
+        console.error('Error checking cooldown:', err);
+    }
+}
+
+function updateCooldownUI(cooldownData) {
+    const startBtn = document.querySelector('button[onclick="startScrape()"]');
+    if (!startBtn) return;
+    
+    // Add or update cooldown indicator
+    let cooldownIndicator = document.getElementById('cooldown-indicator');
+    if (!cooldownIndicator) {
+        cooldownIndicator = document.createElement('div');
+        cooldownIndicator.id = 'cooldown-indicator';
+        cooldownIndicator.className = 'cooldown-status';
+        startBtn.parentElement.insertBefore(cooldownIndicator, startBtn);
+    }
+    
+    if (cooldownData.on_cooldown) {
+        startBtn.disabled = true;
+        startBtn.classList.add('disabled');
+        
+        // Fix: Use total seconds, not convert to minutes incorrectly
+        const totalSeconds = cooldownData.remaining_seconds;
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        
+        cooldownIndicator.innerHTML = `
+            <div class="alert alert-warning">
+                <strong>⏳ Cooldown Active</strong><br>
+                Please wait ${minutes}m ${seconds}s before next scrape<br>
+                <small>Last scrape: ${formatDate(cooldownData.last_scrape)}</small>
+            </div>
+        `;
+        cooldownIndicator.style.display = 'block';
+    } else {
+        startBtn.disabled = false;
+        startBtn.classList.remove('disabled');
+        
+        if (cooldownData.last_scrape) {
+            cooldownIndicator.innerHTML = `
+                <div class="alert alert-success">
+                    <strong>✓ Ready to Scrape</strong><br>
+                    <small>Last scrape: ${formatDate(cooldownData.last_scrape)}</small>
+                </div>
+            `;
+        } else {
+            cooldownIndicator.innerHTML = `
+                <div class="alert alert-info">
+                    <strong>✓ Ready to Scrape</strong><br>
+                    <small>No recent scrapes detected</small>
+                </div>
+            `;
+        }
+        cooldownIndicator.style.display = 'block';
+    }
+}
+
+function startCooldownMonitoring() {
+    // Check cooldown status every 5 seconds for real-time updates
+    if (cooldownCheckInterval) {
+        clearInterval(cooldownCheckInterval);
+    }
+    
+    cooldownCheckInterval = setInterval(() => {
+        checkCooldownStatus();
+    }, 5000);
 }
 
 async function loadCategories() {
@@ -130,7 +207,21 @@ async function startScrape() {
         
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+            
+            // Handle cooldown error specially
+            if (response.status === 429) {
+                const totalSeconds = errorData.detail.remaining_seconds;
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                showNotification(
+                    `⏳ Scraping is on cooldown! Please wait ${minutes}m ${seconds}s`,
+                    'error'
+                );
+                checkCooldownStatus(); // Refresh UI
+                return;
+            }
+            
+            throw new Error(errorData.detail?.message || errorData.detail || `HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
@@ -153,20 +244,40 @@ async function startScrape() {
                         <strong>Status:</strong> 
                         <span class="status-badge status-started">Starting...</span>
                     </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="scrape-progress-bar" style="width: 0%">
+                            <span class="progress-text" id="progress-percent">0%</span>
+                        </div>
+                    </div>
                     <div class="status-row">
-                        <strong>Progress:</strong> 
-                        <span id="progress-text">Initializing...</span>
+                        <strong>Sources Processed:</strong> 
+                        <span id="progress-text">0/0</span>
+                    </div>
+                    <div class="status-row">
+                        <strong>Failed Sources:</strong> 
+                        <span id="failed-count" class="text-danger">0</span>
                     </div>
                     <div class="status-row">
                         <strong>Articles Found:</strong> 
                         <span id="articles-count" class="text-success">0</span>
                     </div>
+                    <div class="status-row">
+                        <strong>New Articles:</strong> 
+                        <span id="new-articles-count" class="text-info">0</span>
+                    </div>
+                    <div class="status-row">
+                        <strong>Updated Articles:</strong> 
+                        <span id="updated-articles-count" class="text-warning">0</span>
+                    </div>
                 </div>
             `;
         }
         
-        // Start polling for status
+        // Start polling for status with faster interval
         startStatusPolling(data.session_id);
+        
+        // Refresh cooldown status after starting
+        checkCooldownStatus();
         
     } catch (err) {
         console.error('Error starting scrape:', err);
@@ -180,18 +291,16 @@ async function startScrape() {
 }
 
 function startStatusPolling(sessionId) {
-    // Clear any existing interval
     if (statusPollInterval) {
         clearInterval(statusPollInterval);
     }
     
-    // Update status immediately
     updateScrapeStatus(sessionId);
     
-    // Poll every 2 seconds
+    // Poll every 1 second for frequent updates
     statusPollInterval = setInterval(() => {
         updateScrapeStatus(sessionId);
-    }, 2000);
+    }, 1000);
 }
 
 async function updateScrapeStatus(sessionId) {
@@ -199,7 +308,6 @@ async function updateScrapeStatus(sessionId) {
         const response = await fetch(`/api/scraper/status/${sessionId}`);
         
         if (!response.ok) {
-            // Session might not exist yet, try again
             if (response.status === 404) {
                 return;
             }
@@ -209,7 +317,6 @@ async function updateScrapeStatus(sessionId) {
         const data = await response.json();
         updateScrapeStatusDisplay(data);
         
-        // If scraping is complete or errored, stop polling
         if (data.status === 'completed' || data.status === 'error') {
             if (statusPollInterval) {
                 clearInterval(statusPollInterval);
@@ -224,14 +331,13 @@ async function updateScrapeStatus(sessionId) {
                 showNotification('Scraping finished with errors', 'error');
             }
             
-            // Reload history after completion
             setTimeout(() => {
                 loadScrapeHistory();
+                checkCooldownStatus(); // Refresh cooldown after completion
             }, 1000);
         }
     } catch (err) {
         console.error('Status poll error:', err);
-        // Don't stop polling on temporary errors
     }
 }
 
@@ -239,37 +345,56 @@ function updateScrapeStatusDisplay(data) {
     const statusEl = document.getElementById('scrape-status');
     if (!statusEl) return;
     
-    // Update status display with real-time data
-    statusEl.innerHTML = `
-        <div class="scrape-progress">
-            <div class="status-row">
-                <strong>Session ID:</strong> 
-                <span class="session-id">${data.session_id || activeSessionId}</span>
-            </div>
-            <div class="status-row">
-                <strong>Status:</strong> 
-                <span class="status-badge status-${data.status}">${data.status}</span>
-            </div>
-            <div class="status-row">
-                <strong>Progress:</strong> 
-                <span id="progress-text">${data.completed_sources || 0}/${data.total_sources || 0} sources</span>
-            </div>
-            <div class="status-row">
-                <strong>Failed Sources:</strong> 
-                <span class="${data.failed_sources > 0 ? 'text-danger' : ''}">${data.failed_sources || 0}</span>
-            </div>
-            <div class="status-row">
-                <strong>Articles Found:</strong> 
-                <span id="articles-count" class="text-success">${data.total_articles || 0}</span>
-            </div>
-            ${data.duration_seconds ? `
-            <div class="status-row">
-                <strong>Duration:</strong> 
-                <span>${Math.round(data.duration_seconds)}s</span>
-            </div>
-            ` : ''}
-        </div>
-    `;
+    // Calculate progress percentage
+    const totalSources = data.total_sources || 0;
+    const completedSources = data.completed_sources || 0;
+    const failedSources = data.failed_sources || 0;
+    const processedSources = completedSources + failedSources;
+    const progressPercent = totalSources > 0 ? Math.round((processedSources / totalSources) * 100) : 0;
+    
+    // Update progress bar if it exists
+    const progressBar = document.getElementById('scrape-progress-bar');
+    if (progressBar) {
+        progressBar.style.width = progressPercent + '%';
+        const progressText = document.getElementById('progress-percent');
+        if (progressText) {
+            progressText.textContent = progressPercent + '%';
+        }
+    }
+    
+    // Update individual stats
+    const progressTextEl = document.getElementById('progress-text');
+    if (progressTextEl) {
+        progressTextEl.textContent = `${processedSources}/${totalSources}`;
+    }
+    
+    const failedCountEl = document.getElementById('failed-count');
+    if (failedCountEl) {
+        failedCountEl.textContent = failedSources;
+        failedCountEl.className = failedSources > 0 ? 'text-danger' : '';
+    }
+    
+    const articlesCountEl = document.getElementById('articles-count');
+    if (articlesCountEl) {
+        articlesCountEl.textContent = data.total_articles || 0;
+    }
+    
+    const newArticlesCountEl = document.getElementById('new-articles-count');
+    if (newArticlesCountEl) {
+        newArticlesCountEl.textContent = data.new_articles || 0;
+    }
+    
+    const updatedArticlesCountEl = document.getElementById('updated-articles-count');
+    if (updatedArticlesCountEl) {
+        updatedArticlesCountEl.textContent = data.updated_articles || 0;
+    }
+    
+    // Update status badge
+    const statusBadges = document.querySelectorAll('.status-badge');
+    statusBadges.forEach(badge => {
+        badge.className = `status-badge status-${data.status}`;
+        badge.textContent = data.status;
+    });
 }
 
 async function loadScrapeHistory() {
@@ -290,19 +415,30 @@ async function loadScrapeHistory() {
             return;
         }
         
-        historyEl.innerHTML = sessions.map(session => `
-            <div class="session-item fade-in">
-                <div class="session-header">
-                    <span class="session-id">${session.session_id}</span>
-                    <span class="status-badge status-${session.status}">${session.status}</span>
+        historyEl.innerHTML = sessions.map(session => {
+            const progressPercent = session.progress_percent || 0;
+            const statusClass = session.status === 'completed' ? 'success' : 
+                              session.status === 'error' ? 'danger' : 
+                              session.status === 'in_progress' ? 'warning' : 'info';
+            
+            return `
+                <div class="session-item fade-in">
+                    <div class="session-header">
+                        <span class="session-id">${session.session_id}</span>
+                        <span class="status-badge status-${session.status}">${session.status}</span>
+                    </div>
+                    <div class="session-meta">
+                        <span class="session-date">${formatDate(session.start_time)}</span>
+                        <span class="session-articles">${session.articles_found || 0} articles 
+                            (${session.new_articles || 0} new, ${session.updated_articles || 0} updated)</span>
+                        ${session.status === 'in_progress' ? 
+                            `<span class="session-progress">Progress: ${session.completed_sources}/${session.total_sources} sources (${progressPercent}%)</span>` 
+                            : ''}
+                        ${session.duration_seconds ? `<span>${Math.round(session.duration_seconds)}s</span>` : ''}
+                    </div>
                 </div>
-                <div class="session-meta">
-                    <span class="session-date">${formatDate(session.start_time)}</span>
-                    <span class="session-articles">${session.articles_found || 0} articles found</span>
-                    ${session.duration_seconds ? `<span>${Math.round(session.duration_seconds)}s</span>` : ''}
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
         
     } catch (err) {
         console.error('Error loading scrape history:', err);
@@ -335,3 +471,16 @@ function showNotification(message, type = 'info') {
         notification.classList.remove('show');
     }, 5000);
 }
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    if (statusPollInterval) {
+        clearInterval(statusPollInterval);
+    }
+    if (cooldownCheckInterval) {
+        clearInterval(cooldownCheckInterval);
+    }
+    if (ws) {
+        ws.close();
+    }
+});
