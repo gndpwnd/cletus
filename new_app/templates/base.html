@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Cletus News Aggregator{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/main.css">
+    
+    <!-- Dynamically load all CSS files in the correct order -->
+    {% for css_file in css_files %}
+    <link rel="stylesheet" href="{{ url_for('static', path=css_file) }}">
+    {% endfor %}
+    
+    <!-- Page-specific CSS can be added here -->
     {% block extra_css %}{% endblock %}
 </head>
 <body>

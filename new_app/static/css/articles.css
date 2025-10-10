@@ -1,0 +1,508 @@
+/* static/css/articles.css - Articles page specific styles */
+
+/* ==================== ARTICLES CONTAINER ==================== */
+.articles-container {
+    min-height: 400px;
+    position: relative;
+}
+
+/* ==================== ARTICLE ITEM (List View) ==================== */
+.article-item {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--transition-base);
+}
+
+.article-item:last-child {
+    border-bottom: none;
+}
+
+.article-item:hover {
+    background-color: var(--background);
+}
+
+/* ==================== ARTICLE HEADER ==================== */
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ==================== ARTICLE HEADLINE ==================== */
+.article-headline {
+    flex: 1;
+    min-width: 0;
+}
+
+.article-headline a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    font-size: var(--font-base);
+    line-height: var(--line-normal);
+    display: inline;
+}
+
+.article-headline a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* ==================== ARTICLE ACTIONS ==================== */
+.article-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+/* ==================== ARTICLE META ==================== */
+.article-meta {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-sm);
+    flex-wrap: wrap;
+}
+
+.article-meta .source {
+    color: var(--text-secondary);
+    font-weight: var(--font-medium);
+}
+
+.article-meta .date {
+    color: var(--text-muted);
+}
+
+.article-meta .priority {
+    color: var(--success-color);
+    font-weight: var(--font-semibold);
+}
+
+/* ==================== ARTICLE BADGES IN META ==================== */
+.article-meta .badge {
+    margin-right: var(--spacing-xs);
+}
+
+/* ==================== ARTICLE CARD VIEW (Alternative) ==================== */
+.article-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.article-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.article-card-title {
+    font-size: var(--font-lg);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--spacing-md);
+}
+
+.article-card-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.article-card-title a:hover {
+    color: var(--primary-color);
+}
+
+.article-card-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.article-card-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+}
+
+/* ==================== SEARCH HIGHLIGHT ==================== */
+.search-highlight {
+    background-color: rgba(250, 204, 21, 0.3);
+    padding: 0.125rem 0.25rem;
+    border-radius: var(--radius-sm);
+}
+
+/* ==================== ARTICLE LOADING STATES ==================== */
+.article-skeleton {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+}
+
+.skeleton-title {
+    height: 20px;
+    background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+    width: 80%;
+}
+
+.skeleton-meta {
+    height: 14px;
+    background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+    width: 40%;
+}
+
+/* ==================== ARTICLE SELECTION STATE ==================== */
+.article-item.selected,
+.article-card.selected {
+    background-color: rgba(37, 99, 235, 0.05);
+    border-left: 3px solid var(--primary-color);
+}
+
+/* ==================== EMPTY STATES ==================== */
+.articles-empty {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    color: var(--text-muted);
+}
+
+.articles-empty-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.5;
+}
+
+.articles-empty-title {
+    font-size: var(--font-xl);
+    font-weight: var(--font-semibold);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.articles-empty-description {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+}
+
+/* ==================== ARTICLE FILTERS ==================== */
+.articles-filters {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--spacing-sm));
+    z-index: var(--z-sticky);
+    background-color: var(--surface);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ==================== RESPONSIVE ADJUSTMENTS ==================== */
+@media (max-width: 768px) {
+    .article-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .article-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .article-card {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* ==================== ARTICLES TABLE (NEW) ==================== */
+#articles-table-container {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    position: relative;
+    background: #1DA1F2;
+}
+
+.articles-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.articles-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f9fafb;
+}
+
+.articles-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    background: #f9fafb;
+    white-space: nowrap;
+}
+
+.articles-table tbody tr {
+    border-bottom: 1px solid #f3f4f6;
+    transition: background-color 0.15s ease;
+}
+
+.articles-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.articles-table tbody td {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #1f2937;
+}
+
+/* ==================== TABLE COLUMNS ==================== */
+.select-col {
+    width: 40px;
+    text-align: center;
+}
+
+.title-col {
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.search-col {
+    width: 50px;
+    text-align: center;
+}
+
+.source-col {
+    width: 150px;
+}
+
+.category-col {
+    width: 120px;
+}
+
+.date-col {
+    width: 180px;
+    white-space: nowrap;
+}
+
+.status-col {
+    width: 150px;
+}
+
+/* ==================== TABLE LINKS ==================== */
+.article-link {
+    color: #2563eb;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-link:hover {
+    text-decoration: underline;
+    color: #1d4ed8;
+}
+
+.search-link {
+    color: #6b7280;
+    transition: color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-link:hover {
+    color: #2563eb;
+}
+
+/* ==================== TABLE BADGES ==================== */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.badge.duplicate {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge.selected {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+/* ==================== ARTICLES ACTIONS (Bottom Bar) ==================== */
+.articles-actions {
+    position: sticky;
+    bottom: 0;
+    padding: 16px;
+    background: #1DA1F2;
+    border-top: 2px solid #1DA1F2;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    z-index: 5;
+}
+
+/* ==================== LOADING INDICATOR ==================== */
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: #6b7280;
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==================== ARTICLE COUNT ==================== */
+.article-count {
+    padding: 8px 16px;
+    margin: 12px 0;
+    background: #1DA1F2;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
+}
+
+/* ==================== NO RESULTS ==================== */
+.no-results {
+    text-align: center;
+    padding: 48px 24px;
+    color: #9ca3af;
+    font-size: 16px;
+}
+
+/* ==================== BUTTON STYLES ==================== */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+.btn-info {
+    background: #0891b2;
+    color: white;
+}
+
+.btn-info:hover:not(:disabled) {
+    background: #0e7490;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #4b5563;
+}
+
+/* ==================== CHECKBOX STYLES ==================== */
+.article-checkbox,
+#select-all-checkbox {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/* ==================== RESPONSIVE TABLE ==================== */
+@media (max-width: 1024px) {
+    #articles-table-container {
+        max-height: calc(100vh - 200px);
+    }
+    
+    .title-col {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .articles-table {
+        font-size: 13px;
+    }
+    
+    .articles-table thead th,
+    .articles-table tbody td {
+        padding: 8px 12px;
+    }
+    
+    .articles-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,270 @@
+/* static/css/tables.css - Table styles for articles and data display */
+
+/* ==================== GENERAL TABLE STYLES ==================== */
+.articles-table-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    background-color: var(--surface);
+}
+
+.articles-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface);
+}
+
+/* ==================== TABLE HEADER ==================== */
+.articles-table thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--background);
+    z-index: var(--z-dropdown);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.articles-table th {
+    padding: var(--table-cell-padding);
+    text-align: left;
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+    background-color: var(--background);
+    border-bottom: 2px solid var(--border);
+    font-size: var(--font-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* ==================== TABLE BODY ==================== */
+.articles-table tbody tr {
+    transition: background-color var(--transition-base);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.articles-table tbody tr:hover {
+    background-color: var(--background);
+}
+
+.articles-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.articles-table td {
+    padding: var(--table-cell-padding);
+    font-size: var(--font-sm);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+/* ==================== COLUMN WIDTHS ==================== */
+.select-col {
+    width: 50px;
+    text-align: center;
+}
+
+.search-col {
+    width: 60px;
+    text-align: center;
+}
+
+.source-col {
+    width: 150px;
+}
+
+.category-col {
+    width: 120px;
+}
+
+.date-col {
+    width: 170px;
+}
+
+.status-col {
+    width: 140px;
+}
+
+.title-col {
+    min-width: 300px;
+    max-width: 600px;
+}
+
+/* ==================== ARTICLE LINKS ==================== */
+.article-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    transition: color var(--transition-base);
+    display: inline;
+}
+
+.article-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.search-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: color var(--transition-base);
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+}
+
+.search-link:hover {
+    color: var(--primary-color);
+    background-color: var(--background);
+}
+
+/* ==================== CHECKBOXES IN TABLES ==================== */
+.article-checkbox,
+.articles-table input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/* Indeterminate state for select all checkbox */
+.articles-table input[type="checkbox"]:indeterminate {
+    background-color: var(--primary-color);
+}
+
+/* ==================== TABLE ROW STATES ==================== */
+.article-row {
+    transition: background-color var(--transition-base);
+}
+
+.article-row.selected {
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.article-row.new-article {
+    animation: highlight-new 2s ease;
+}
+
+/* ==================== LOAD MORE INDICATOR ==================== */
+.load-more-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+}
+
+/* ==================== TABLE ACTIONS ==================== */
+.articles-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    padding: var(--spacing-lg);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* ==================== PAGINATION ==================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+}
+
+.page-info {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    font-weight: var(--font-medium);
+}
+
+.pagination .btn {
+    min-width: 80px;
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+.articles-table-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.articles-table-container::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+.articles-table-container::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+    border-radius: var(--radius-sm);
+}
+
+.articles-table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* ==================== RESPONSIVE TABLE ==================== */
+@media (max-width: 1024px) {
+    .date-col {
+        display: none;
+    }
+    
+    .title-col {
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .articles-table-container {
+        max-height: 60vh;
+    }
+    
+    .source-col,
+    .category-col,
+    .status-col {
+        display: none;
+    }
+    
+    .title-col {
+        min-width: 200px;
+    }
+    
+    .articles-actions {
+        flex-direction: column;
+    }
+    
+    .articles-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ==================== SIMPLE DATA TABLES ==================== */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+    font-weight: var(--font-semibold);
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+.data-table tr:hover {
+    background-color: var(--background);
+}

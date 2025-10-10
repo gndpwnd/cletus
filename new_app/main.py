@@ -1,21 +1,48 @@
 """
 main.py
-FastAPI News Aggregation Application - Main entry point with template support
+FastAPI News Aggregation Application - Enhanced with CSS loader
 """
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
 from pathlib import Path
+import asyncio
+import json
+from datetime import datetime
 
 from api import articles, blacklist, scraper, analysis
 from core.config import settings
-from core.database import init_db
+from core.database import init_db, async_session_maker
 from services.scheduler_service import scheduler_service
 from services.blacklist_service import BlacklistService
-from core.database import async_session_maker
+
+# Import CSS loader
+from css_loader import get_css_files
+
+# WebSocket connection manager
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: list[WebSocket] = []
+    
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.append(websocket)
+    
+    def disconnect(self, websocket: WebSocket):
+        self.active_connections.remove(websocket)
+    
+    async def broadcast(self, message: dict):
+        """Broadcast message to all connected clients"""
+        for connection in self.active_connections:
+            try:
+                await connection.send_json(message)
+            except:
+                pass
+
+manager = ConnectionManager()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -36,6 +63,11 @@ async def lifespan(app: FastAPI):
     # Start scheduler
     scheduler_service.start()
     print("✓ Scheduler started")
+    
+    # Start change watcher task
+    asyncio.create_task(watch_for_changes())
+    print("✓ Change watcher started")
+    
     print(f"\nApplication running at http://{settings.HOST}:{settings.PORT}")
     print(f"API Documentation: http://{settings.HOST}:{settings.PORT}/docs\n")
     
@@ -73,37 +105,111 @@ Path("logs").mkdir(exist_ok=True)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+# Add CSS loader to template context
+@app.middleware("http")
+async def add_css_context(request: Request, call_next):
+    """Add CSS files to all template contexts"""
+    response = await call_next(request)
+    return response
+
+# Custom template response that includes CSS files
+def render_template(template_name: str, request: Request, **context):
+    """Render template with CSS files automatically included"""
+    context["request"] = request
+    context["css_files"] = get_css_files()
+    return templates.TemplateResponse(template_name, context)
+
 # Include API routers
 app.include_router(articles.router, prefix="/api/articles", tags=["Articles"])
 app.include_router(blacklist.router, prefix="/api/blacklist", tags=["Blacklist"])
 app.include_router(scraper.router, prefix="/api/scraper", tags=["Scraper"])
 app.include_router(analysis.router, prefix="/api/analysis", tags=["Analysis"])
 
-# Frontend routes
+# WebSocket endpoint for real-time updates
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await manager.connect(websocket)
+    try:
+        while True:
+            await websocket.receive_text()
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+
+# Change watcher background task
+async def watch_for_changes():
+    """Watch for database and blacklist changes"""
+    from sqlalchemy import select, func
+    from models.models import Article, Blacklist
+    
+    last_article_count = 0
+    last_blacklist_count = 0
+    last_check = datetime.now()
+    
+    while True:
+        try:
+            await asyncio.sleep(2)
+            
+            async with async_session_maker() as db:
+                result = await db.execute(select(func.count(Article.id)))
+                current_article_count = result.scalar()
+                
+                result = await db.execute(
+                    select(func.count(Blacklist.id)).where(Blacklist.is_active == True)
+                )
+                current_blacklist_count = result.scalar()
+                
+                changes = {}
+                
+                if current_article_count != last_article_count:
+                    changes["articles"] = {
+                        "count": current_article_count,
+                        "new": current_article_count - last_article_count
+                    }
+                    last_article_count = current_article_count
+                
+                if current_blacklist_count != last_blacklist_count:
+                    changes["blacklist"] = {
+                        "count": current_blacklist_count,
+                        "new": current_blacklist_count - last_blacklist_count
+                    }
+                    last_blacklist_count = current_blacklist_count
+                
+                if changes:
+                    await manager.broadcast({
+                        "type": "database_update",
+                        "timestamp": datetime.now().isoformat(),
+                        "changes": changes
+                    })
+        
+        except Exception as e:
+            print(f"Error in change watcher: {e}")
+            await asyncio.sleep(5)
+
+# Frontend routes - Updated to use render_template
 @app.get("/")
 async def root(request: Request):
     """Serve dashboard homepage"""
-    return templates.TemplateResponse("index.html", {"request": request})
+    return render_template("index.html", request)
 
 @app.get("/articles")
 async def articles_page(request: Request):
     """Serve articles page"""
-    return templates.TemplateResponse("articles.html", {"request": request})
+    return render_template("articles.html", request)
 
 @app.get("/scraper")
 async def scraper_page(request: Request):
     """Serve scraper page"""
-    return templates.TemplateResponse("scraper.html", {"request": request})
+    return render_template("scraper.html", request)
 
 @app.get("/blacklist")
 async def blacklist_page(request: Request):
     """Serve blacklist page"""
-    return templates.TemplateResponse("blacklist.html", {"request": request})
+    return render_template("blacklist.html", request)
 
 @app.get("/analysis")
 async def analysis_page(request: Request):
     """Serve analysis page"""
-    return templates.TemplateResponse("analysis.html", {"request": request})
+    return render_template("analysis.html", request)
 
 # API endpoints
 @app.get("/health")
@@ -131,15 +237,16 @@ async def api_info():
             "Manual scraping on-demand with category/source filtering",
             "Duplicate detection and article appearance tracking",
             "Blacklist management (dual JSON + DB with auto-sync)",
-            "Article analysis and prioritization",
-            "Trending topics detection",
-            "Source reliability metrics"
+            "Article analysis and trending topics",
+            "Real-time updates via WebSocket",
+            "Lazy loading and infinite scroll"
         ],
         "endpoints": {
             "docs": "/docs",
             "redoc": "/redoc",
             "health": "/health",
-            "api": "/api/info"
+            "api": "/api/info",
+            "websocket": "/ws"
         },
         "schedule": {
             "morning": f"{settings.MORNING_SCRAPE_HOUR}:{settings.MORNING_SCRAPE_MINUTE:02d} {settings.SCRAPE_TIMEZONE}",

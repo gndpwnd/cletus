@@ -1,0 +1,113 @@
+/* static/css/blacklist.css - Blacklist page specific styles */
+
+/* ==================== BLACKLIST CONTAINER ==================== */
+.blacklist-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.blacklist-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blacklist-container::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+.blacklist-container::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.blacklist-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* ==================== BLACKLIST ITEMS ==================== */
+.blacklist-item {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+    transition: background-color var(--transition-base);
+}
+
+.blacklist-item:hover {
+    background-color: var(--background);
+}
+
+.blacklist-item:last-child {
+    border-bottom: none;
+}
+
+/* ==================== BLACKLIST PATTERN ==================== */
+.blacklist-pattern {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: var(--font-sm);
+    word-break: break-all;
+    flex: 1;
+    color: var(--text-primary);
+    font-weight: var(--font-medium);
+}
+
+/* ==================== BLACKLIST METADATA ==================== */
+.blacklist-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    font-size: var(--font-sm);
+}
+
+.reason {
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.blacklist-date {
+    color: var(--text-muted);
+    font-size: var(--font-xs);
+}
+
+/* ==================== BLACKLIST ACTIONS ==================== */
+.blacklist-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* ==================== FORM CONTAINER ==================== */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .blacklist-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+    
+    .blacklist-meta {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .reason {
+        max-width: 100%;
+    }
+    
+    .blacklist-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

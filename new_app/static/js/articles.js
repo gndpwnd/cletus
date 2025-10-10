@@ -1,4 +1,4 @@
-// static/js/articles.js - Articles page functionality
+// static/js/articles.js - Articles page with infinite scroll
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeArticlesPage();
@@ -6,20 +6,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let currentArticles = [];
 let selectedArticles = new Set();
+let isLoading = false;
+let hasMore = true;
+let currentSkip = 0;
+const LOAD_LIMIT = 50;
+let currentFilters = {};
 
 function initializeArticlesPage() {
-    loadArticles();
     setupFilterForm();
+    loadInitialArticles();
+    setupInfiniteScroll();
 }
 
-async function loadArticles(params = {}) {
+async function loadInitialArticles() {
+    currentSkip = 0;
+    hasMore = true;
+    currentArticles = [];
+    selectedArticles.clear();
+    
+    const listEl = document.getElementById('articles-list');
+    if (!listEl) return;
+    
+    listEl.innerHTML = '<h2>Articles</h2><div id="articles-table-container"></div>';
+    
+    await loadMoreArticles();
+}
+
+async function loadMoreArticles() {
+    if (isLoading || !hasMore) return;
+    
+    isLoading = true;
+    showLoadingIndicator();
+    
     try {
-        // Build query string from parameters
         const queryString = new URLSearchParams({
-            limit: params.limit || 50,
-            skip: params.skip || 0,
-            category: params.category || '',
-            source: params.source || ''
+            limit: LOAD_LIMIT,
+            skip: currentSkip,
+            category: currentFilters.category || '',
+            source: currentFilters.source || ''
         }).toString();
         
         const response = await fetch(`/api/articles/?${queryString}`);
@@ -29,27 +53,58 @@ async function loadArticles(params = {}) {
         
         const data = await response.json();
         
-        const listEl = document.getElementById('articles-list');
-        if (!listEl) return;
-        
-        // Store current articles for selection
-        currentArticles = data.articles || [];
-        
-        listEl.innerHTML = '<h2>Articles</h2>';
-        
-        if (!currentArticles || currentArticles.length === 0) {
-            listEl.innerHTML += '<p class="no-results">No articles found</p>';
-            return;
+        if (data.articles && data.articles.length > 0) {
+            appendArticles(data.articles);
+            currentSkip += data.articles.length;
+            
+            // Check if there are more articles to load
+            hasMore = currentSkip < data.total;
+        } else {
+            hasMore = false;
         }
         
-        // Update pagination
-        updatePagination(data.total, data.skip, data.limit);
+        updateArticleCount(data.total);
         
-        // Create articles table
-        const table = createArticlesTable(currentArticles);
-        listEl.appendChild(table);
+    } catch (err) {
+        console.error('Error loading articles:', err);
+        showNotification('Error loading articles: ' + err.message, 'error');
+        hasMore = false;
+    } finally {
+        isLoading = false;
+        hideLoadingIndicator();
+    }
+}
+
+function appendArticles(articles) {
+    const container = document.getElementById('articles-table-container');
+    if (!container) return;
+    
+    let table = container.querySelector('.articles-table');
+    let tbody;
+    
+    // Create table if it doesn't exist
+    if (!table) {
+        table = document.createElement('table');
+        table.className = 'articles-table';
+        table.innerHTML = `
+            <thead>
+                <tr>
+                    <th class="select-col">
+                        <input type="checkbox" id="select-all-checkbox" onchange="toggleSelectAll(this.checked)">
+                    </th>
+                    <th class="title-col">Article Title</th>
+                    <th class="search-col">Search</th>
+                    <th class="source-col">Source</th>
+                    <th class="category-col">Category</th>
+                    <th class="date-col">Published Date</th>
+                    <th class="status-col">Status</th>
+                </tr>
+            </thead>
+            <tbody id="articles-table-body"></tbody>
+        `;
+        container.appendChild(table);
         
-        // Add action buttons container
+        // Add action buttons after table
         const actionContainer = document.createElement('div');
         actionContainer.className = 'articles-actions';
         actionContainer.innerHTML = `
@@ -59,41 +114,17 @@ async function loadArticles(params = {}) {
             <button onclick="selectAllArticles()" class="btn btn-secondary" id="select-all-btn">Select All</button>
             <button onclick="deselectAllArticles()" class="btn btn-secondary" id="deselect-all-btn">Deselect All</button>
         `;
-        listEl.appendChild(actionContainer);
-        
-    } catch (err) {
-        console.error('Error loading articles:', err);
-        showNotification('Error loading articles: ' + err.message, 'error');
+        container.appendChild(actionContainer);
     }
-}
-
-function createArticlesTable(articles) {
-    const table = document.createElement('table');
-    table.className = 'articles-table';
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th class="select-col"><input type="checkbox" id="select-all-checkbox" onchange="toggleSelectAll(this.checked)"></th>
-                <th class="title-col">Article Title</th>
-                <th class="search-col">Search</th>
-                <th class="source-col">Source</th>
-                <th class="category-col">Category</th>
-                <th class="date-col">Published Date</th>
-                <th class="status-col">Status</th>
-            </tr>
-        </thead>
-        <tbody id="articles-table-body">
-        </tbody>
-    `;
     
-    const tbody = table.querySelector('#articles-table-body');
+    tbody = table.querySelector('#articles-table-body');
     
+    // Append new articles
     articles.forEach(article => {
+        currentArticles.push(article);
         const row = createArticleRow(article);
         tbody.appendChild(row);
     });
-    
-    return table;
 }
 
 function createArticleRow(article) {
@@ -131,13 +162,76 @@ function createArticleRow(article) {
     return row;
 }
 
-function generateSearchUrl(headline) {
-    // Clean the headline for search - just encode the entire string properly
-    // This will handle spaces and special characters correctly
-    const searchQuery = headline.trim();
+function setupInfiniteScroll() {
+    const container = document.getElementById('articles-table-container');
+    if (!container) return;
     
-    // Use Google search with proper URL encoding
-    // Spaces will be encoded as %20, not as +
+    // Create intersection observer for infinite scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isLoading && hasMore) {
+                loadMoreArticles();
+            }
+        });
+    }, {
+        root: container,
+        rootMargin: '100px',
+        threshold: 0.1
+    });
+    
+    // Observe the loading indicator
+    const loadingIndicator = document.getElementById('loading-indicator');
+    if (loadingIndicator) {
+        observer.observe(loadingIndicator);
+    }
+}
+
+function showLoadingIndicator() {
+    let indicator = document.getElementById('loading-indicator');
+    if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'loading-indicator';
+        indicator.className = 'loading-indicator';
+        indicator.innerHTML = '<div class="spinner"></div><p>Loading more articles...</p>';
+        
+        const container = document.getElementById('articles-table-container');
+        if (container) {
+            container.appendChild(indicator);
+        }
+    }
+    indicator.style.display = 'flex';
+}
+
+function hideLoadingIndicator() {
+    const indicator = document.getElementById('loading-indicator');
+    if (indicator) {
+        if (!hasMore) {
+            indicator.innerHTML = '<p>No more articles to load</p>';
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        } else {
+            indicator.style.display = 'none';
+        }
+    }
+}
+
+function updateArticleCount(total) {
+    let countEl = document.getElementById('article-count');
+    if (!countEl) {
+        countEl = document.createElement('div');
+        countEl.id = 'article-count';
+        countEl.className = 'article-count';
+        const listEl = document.getElementById('articles-list');
+        if (listEl) {
+            listEl.insertBefore(countEl, listEl.querySelector('#articles-table-container'));
+        }
+    }
+    countEl.textContent = `Showing ${currentArticles.length} of ${total} articles`;
+}
+
+function generateSearchUrl(headline) {
+    const searchQuery = headline.trim();
     return `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
 }
 
@@ -147,24 +241,20 @@ function toggleArticleSelection(articleId, isSelected) {
     } else {
         selectedArticles.delete(articleId);
     }
-    
     updateActionButtons();
 }
 
 function toggleSelectAll(isSelected) {
     const checkboxes = document.querySelectorAll('.article-checkbox');
-    
     checkboxes.forEach(checkbox => {
         checkbox.checked = isSelected;
         const articleId = parseInt(checkbox.value);
-        
         if (isSelected) {
             selectedArticles.add(articleId);
         } else {
             selectedArticles.delete(articleId);
         }
     });
-    
     updateActionButtons();
 }
 
@@ -174,7 +264,6 @@ function selectAllArticles() {
         checkbox.checked = true;
         selectedArticles.add(parseInt(checkbox.value));
     });
-    
     updateActionButtons();
 }
 
@@ -183,7 +272,6 @@ function deselectAllArticles() {
     checkboxes.forEach(checkbox => {
         checkbox.checked = false;
     });
-    
     selectedArticles.clear();
     updateActionButtons();
 }
@@ -200,18 +288,16 @@ function updateActionButtons() {
     if (blacklistBtn) blacklistBtn.disabled = !hasSelection;
     if (searchBtn) searchBtn.disabled = !hasSelection;
     
-    // Update select all checkbox state
     if (selectAllCheckbox) {
-        const totalArticles = document.querySelectorAll('.article-checkbox').length;
-        selectAllCheckbox.checked = selectedArticles.size === totalArticles && totalArticles > 0;
-        selectAllCheckbox.indeterminate = selectedArticles.size > 0 && selectedArticles.size < totalArticles;
+        const totalVisible = document.querySelectorAll('.article-checkbox').length;
+        selectAllCheckbox.checked = selectedArticles.size === totalVisible && totalVisible > 0;
+        selectAllCheckbox.indeterminate = selectedArticles.size > 0 && selectedArticles.size < totalVisible;
     }
 }
 
 function openSelectedArticles() {
     if (selectedArticles.size === 0) return;
     
-    // Open each selected article in a new tab
     currentArticles.forEach(article => {
         if (selectedArticles.has(article.id)) {
             window.open(article.link, '_blank');
@@ -224,7 +310,6 @@ function openSelectedArticles() {
 function searchSelectedArticles() {
     if (selectedArticles.size === 0) return;
     
-    // Search for each selected article in new tabs
     currentArticles.forEach(article => {
         if (selectedArticles.has(article.id)) {
             const searchUrl = generateSearchUrl(article.headline);
@@ -238,20 +323,15 @@ function searchSelectedArticles() {
 async function blacklistSelectedArticles() {
     if (selectedArticles.size === 0) return;
     
-    if (!confirm(`Blacklist ${selectedArticles.size} selected articles? This will add their URLs to the blacklist.`)) {
+    if (!confirm(`Blacklist ${selectedArticles.size} selected articles?`)) {
         return;
     }
     
     try {
-        const urlsToBlacklist = [];
+        const urlsToBlacklist = currentArticles
+            .filter(article => selectedArticles.has(article.id))
+            .map(article => article.link);
         
-        currentArticles.forEach(article => {
-            if (selectedArticles.has(article.id)) {
-                urlsToBlacklist.push(article.link);
-            }
-        });
-        
-        // Use bulk add endpoint if available, otherwise add one by one
         const response = await fetch('/api/blacklist/bulk-add', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -267,8 +347,6 @@ async function blacklistSelectedArticles() {
         
         const result = await response.json();
         showNotification(result.message, 'success');
-        
-        // Clear selection after blacklisting
         deselectAllArticles();
         
     } catch (err) {
@@ -278,82 +356,82 @@ async function blacklistSelectedArticles() {
 
 function setupFilterForm() {
     const searchInput = document.getElementById('search-input');
-    const categoryFilter = document.getElementById('category-filter');
-    const sourceFilter = document.getElementById('source-filter');
+    if (!searchInput) return;
     
-    // Add event listeners for real-time filtering or apply on enter
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                loadArticles();
-            }
-        });
+    const newSearchInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(newSearchInput, searchInput);
+    
+    let searchTimeout;
+    newSearchInput.addEventListener('input', function(e) {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchTerm = e.target.value.trim().toLowerCase();
+            filterArticlesLocally(searchTerm);
+        }, 300);
+    });
+    
+    newSearchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const searchTerm = e.target.value.trim().toLowerCase();
+            filterArticlesLocally(searchTerm);
+        }
+    });
+}
+
+function filterArticlesLocally(searchTerm) {
+    const rows = document.querySelectorAll('.article-row');
+    let visibleCount = 0;
+    
+    rows.forEach(row => {
+        const titleCell = row.querySelector('.title-col');
+        if (!titleCell) return;
+        
+        const title = titleCell.textContent.toLowerCase();
+        
+        if (!searchTerm || title.includes(searchTerm)) {
+            row.style.display = '';
+            visibleCount++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    
+    const tbody = document.getElementById('articles-table-body');
+    const existingMsg = tbody?.querySelector('.no-results-row');
+    
+    if (visibleCount === 0 && searchTerm && tbody) {
+        if (!existingMsg) {
+            const noResultsRow = document.createElement('tr');
+            noResultsRow.className = 'no-results-row';
+            noResultsRow.innerHTML = '<td colspan="7" style="text-align: center; padding: 20px;">No articles match your search</td>';
+            tbody.appendChild(noResultsRow);
+        }
+    } else if (existingMsg) {
+        existingMsg.remove();
     }
-    
-    if (sourceFilter) {
-        sourceFilter.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                loadArticles();
-            }
-        });
+}
+
+function clearFilters() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.value = '';
+        filterArticlesLocally('');
     }
 }
 
 function applyFilters() {
-    const search = document.getElementById('search-input')?.value.trim();
     const category = document.getElementById('category-filter')?.value;
     const source = document.getElementById('source-filter')?.value.trim();
     
-    // Reset selection when filters change
+    currentFilters = { category, source };
     selectedArticles.clear();
-    
-    loadArticles({
-        category,
-        source,
-        skip: 0 // Reset to first page
-    });
+    loadInitialArticles();
 }
 
-function clearFilters() {
-    document.getElementById('search-input').value = '';
-    document.getElementById('category-filter').value = '';
-    document.getElementById('source-filter').value = '';
-    
-    // Reset selection when clearing filters
-    selectedArticles.clear();
-    
-    loadArticles({ skip: 0 });
-}
-
-function updatePagination(total, skip, limit) {
-    const pageEl = document.getElementById('page-info');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    
-    if (!pageEl || !prevBtn || !nextBtn) return;
-    
-    const currentPage = Math.floor(skip / limit) + 1;
-    const totalPages = Math.ceil(total / limit);
-    
-    pageEl.textContent = `Page ${currentPage} of ${totalPages}`;
-    
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === totalPages;
-    
-    prevBtn.onclick = () => {
-        selectedArticles.clear(); // Clear selection when changing pages
-        loadArticles({ skip: Math.max(0, skip - limit) });
-    };
-    
-    nextBtn.onclick = () => {
-        selectedArticles.clear(); // Clear selection when changing pages
-        loadArticles({ skip: skip + limit });
-    };
-}
-
-// Helper functions
 function escapeHtml(unsafe) {
-    return unsafe
+    if (!unsafe) return '';
+    return String(unsafe)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -362,6 +440,7 @@ function escapeHtml(unsafe) {
 }
 
 function formatDate(dateString) {
+    if (!dateString) return 'N/A';
     const date = new Date(dateString);
     return date.toLocaleString('en-US', {
         month: 'short',
@@ -373,10 +452,20 @@ function formatDate(dateString) {
 }
 
 function showNotification(message, type) {
-    // Basic notification implementation
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'error' ? '#dc2626' : type === 'success' ? '#16a34a' : '#3b82f6'};
+        color: white;
+        border-radius: 4px;
+        z-index: 10000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    `;
     document.body.appendChild(notification);
     setTimeout(() => notification.remove(), 3000);
 }

@@ -1,10 +1,10 @@
 """
 app/api/scraper.py
-Web scraping endpoints
+Web scraping endpoints - COMPLETE VERSION WITH /sessions ENDPOINT
 """
 from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, func
 from datetime import datetime
 from typing import Dict
 
@@ -91,6 +91,69 @@ async def get_scrape_status(
         } for log in logs]
     )
 
+@router.get("/sessions")
+async def get_scrape_sessions(
+    limit: int = 10,
+    skip: int = 0,
+    db: AsyncSession = Depends(get_db)
+):
+    """Get list of scraping sessions with their stats"""
+    from models.models import ScrapeLog
+    
+    # Get distinct session IDs ordered by most recent
+    session_query = (
+        select(ScrapeLog.session_id, func.min(ScrapeLog.start_time).label('start_time'))
+        .group_by(ScrapeLog.session_id)
+        .order_by(func.min(ScrapeLog.start_time).desc())
+        .offset(skip)
+        .limit(limit)
+    )
+    
+    result = await db.execute(session_query)
+    sessions_data = result.all()
+    
+    sessions = []
+    for session_id, start_time in sessions_data:
+        # Get logs for this session
+        logs_result = await db.execute(
+            select(ScrapeLog).where(ScrapeLog.session_id == session_id)
+        )
+        logs = logs_result.scalars().all()
+        
+        # Calculate stats
+        completed = sum(1 for log in logs if log.status == "success")
+        failed = sum(1 for log in logs if log.status in ["error", "timeout"])
+        total_sources = len(logs)
+        articles_found = sum(log.articles_found or 0 for log in logs)
+        
+        # Determine overall status
+        if completed + failed == total_sources:
+            status = "completed"
+        elif failed > completed:
+            status = "error"
+        else:
+            status = "in_progress"
+        
+        # Calculate duration
+        duration_seconds = None
+        if logs:
+            durations = [log.duration_seconds for log in logs if log.duration_seconds]
+            if durations:
+                duration_seconds = sum(durations)
+        
+        sessions.append({
+            "session_id": session_id,
+            "start_time": start_time.isoformat() if start_time else None,
+            "status": status,
+            "total_sources": total_sources,
+            "completed_sources": completed,
+            "failed_sources": failed,
+            "articles_found": articles_found,
+            "duration_seconds": duration_seconds
+        })
+    
+    return sessions
+
 @router.get("/categories")
 async def get_available_categories():
     """Get list of available scraping categories"""
@@ -104,7 +167,7 @@ async def get_available_categories():
 @router.get("/sources")
 async def get_available_sources(category: str = None):
     """Get list of available sources, optionally filtered by category"""
-    from app.core.sources import LINK_DICTIONARIES
+    from core.sources import LINK_DICTIONARIES
     
     if category:
         if category not in LINK_DICTIONARIES:

@@ -1,0 +1,188 @@
+/* static/css/analysis.css - Analysis page specific styles */
+
+/* ==================== ANALYSIS CONTAINER ==================== */
+.analysis-content {
+    min-height: 300px;
+}
+
+/* ==================== TRENDING TOPICS ==================== */
+.trending-item {
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.trending-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.trending-item h3 {
+    color: var(--primary-color);
+    font-size: var(--font-xl);
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-semibold);
+}
+
+.trending-item p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.sample-headlines {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border);
+}
+
+.sample-headlines h4 {
+    font-size: var(--font-sm);
+    font-weight: var(--font-semibold);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-md);
+}
+
+.sample {
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+    margin-bottom: var(--spacing-xs);
+    padding-left: var(--spacing-md);
+    border-left: 2px solid var(--border);
+}
+
+/* ==================== DUPLICATE GROUPS ==================== */
+.duplicate-group {
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    background-color: var(--background);
+}
+
+.duplicate-group h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    font-size: var(--font-lg);
+    font-weight: var(--font-semibold);
+}
+
+.duplicate-article {
+    padding: var(--spacing-md);
+    background-color: var(--surface);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid var(--border-light);
+    transition: background-color var(--transition-base);
+}
+
+.duplicate-article:hover {
+    background-color: var(--border-light);
+}
+
+.duplicate-article:last-child {
+    margin-bottom: 0;
+}
+
+.duplicate-article p {
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-sm);
+}
+
+.duplicate-article a {
+    color: var(--primary-color);
+    font-size: var(--font-sm);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.duplicate-article a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* ==================== PRIORITY ARTICLES ==================== */
+.priority-article {
+    display: flex;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--transition-base);
+}
+
+.priority-article:hover {
+    background-color: var(--background);
+}
+
+.priority-article:last-child {
+    border-bottom: none;
+}
+
+.priority-header {
+    display: flex;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.priority-score {
+    background-color: var(--primary-color);
+    color: var(--text-inverse);
+    font-weight: var(--font-bold);
+    font-size: var(--font-xl);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-md);
+}
+
+.priority-content {
+    flex: 1;
+}
+
+.priority-content h4 {
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-base);
+    font-weight: var(--font-semibold);
+}
+
+.priority-content h4 a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.priority-content h4 a:hover {
+    color: var(--primary-color);
+}
+
+.priority-content .article-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .trending-item,
+    .duplicate-group {
+        padding: var(--spacing-lg);
+    }
+    
+    .priority-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .priority-score {
+        width: 50px;
+        height: 50px;
+        font-size: var(--font-lg);
+    }
+}
