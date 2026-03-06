@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-03-05 - EVE"
-date = "2026-03-05"
+title = "US Intelligence - 2026-03-06 - MOR"
+date = "2026-03-06"
 description = "US Intelligence news for today"
 tags = [
     "US Intelligence",
@@ -75,7 +75,7 @@ tags = [
 
 <input type='checkbox' name='article_29' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-removes-violent-rapist-and-salvadoran-national-maryland' /> 29 - <a href='https://www.google.com/search?q=www.nsa.gov+ICE+removes+violent+rapist+and+Salvadoran+national+from+Maryland' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-removes-violent-rapist-and-salvadoran-national-maryland' target='_blank' rel='noopener noreferrer'>ICE removes violent rapist and Salvadoran national from Maryland</a><br>
 
-<input type='checkbox' name='article_30' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-arresta-extranjero-ilegal-delincuente-violento-que-asesino-un-nino-pequeno-en' /> 30 - <a href='https://www.google.com/search?q=www.nsa.gov+ICE+arresta+a+extranjero+ilegal+delincuente+violento+que+asesin%C3%B3+a+un+ni%C3%B1o+peque%C3%B1o+en+Wisconsin' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-arresta-extranjero-ilegal-delincuente-violento-que-asesino-un-nino-pequeno-en' target='_blank' rel='noopener noreferrer'>ICE arresta a extranjero ilegal delincuente violento que asesinó a un niño pequeño en Wisconsin</a><br>
+<input type='checkbox' name='article_30' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-arrests-violent-criminal-illegal-alien-who-murdered-toddler-wisconsin' /> 30 - <a href='https://www.google.com/search?q=www.nsa.gov+ICE+arrests+violent+criminal+illegal+alien+who+murdered+a+toddler+in+Wisconsin' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-arrests-violent-criminal-illegal-alien-who-murdered-toddler-wisconsin' target='_blank' rel='noopener noreferrer'>ICE arrests violent criminal illegal alien who murdered a toddler in Wisconsin</a><br>
 
 <input type='checkbox' name='article_31' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/hsis-operation-crazy-train-continues-dismantle-tren-de-aragua-following-superseding' /> 31 - <a href='https://www.google.com/search?q=www.nsa.gov+HSI%E2%80%99s+Operation+Crazy+Train+continues+to+dismantle+Tren+De+Aragua+following+superseding+RICO+indictments' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/hsis-operation-crazy-train-continues-dismantle-tren-de-aragua-following-superseding' target='_blank' rel='noopener noreferrer'>HSI’s Operation Crazy Train continues to dismantle Tren De Aragua following superseding RICO indictments</a><br>
 
