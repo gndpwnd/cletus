@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-04-25 - EVE"
-date = "2026-04-25"
+title = "US Government - 2026-04-26 - MOR"
+date = "2026-04-26"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -84,9 +84,9 @@ tags = [
 
 <input type='checkbox' name='article_35' value='https://www.dailypress.senate.gov/congress/bills/119/hr6431' /> 35 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+6431%3A+New+Opportunities+for+Business+Ownership+and+Self-Sufficiency+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr6431' target='_blank' rel='noopener noreferrer'>H.R. 6431: New Opportunities for Business Ownership and Self-Sufficiency Act</a><br>
 
-<input type='checkbox' name='article_36' value='https://www.dailypress.senate.gov/congress/bills/119/hr3648' /> 36 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3648%3A+Transit+Captions+Innovations+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3648' target='_blank' rel='noopener noreferrer'>H.R. 3648: Transit Captions Innovations Act</a><br>
+<input type='checkbox' name='article_36' value='https://www.dailypress.senate.gov/congress/bills/119/hr8250' /> 36 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8250%3A+Parents+Decide+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8250' target='_blank' rel='noopener noreferrer'>H.R. 8250: Parents Decide Act</a><br>
 
-<input type='checkbox' name='article_37' value='https://www.dailypress.senate.gov/congress/bills/119/hr8250' /> 37 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8250%3A+Parents+Decide+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8250' target='_blank' rel='noopener noreferrer'>H.R. 8250: Parents Decide Act</a><br>
+<input type='checkbox' name='article_37' value='https://www.dailypress.senate.gov/congress/bills/119/hr3648' /> 37 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3648%3A+Transit+Captions+Innovations+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3648' target='_blank' rel='noopener noreferrer'>H.R. 3648: Transit Captions Innovations Act</a><br>
 
 <input type='checkbox' name='article_38' value='https://www.dailypress.senate.gov/congress/bills/119/hjres140' /> 38 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.J.Res.+140%3A+Providing+for+congressional+disapproval+under+chapter+8+of+title+5%2C+United+States+Code%2C+of+the+rule+submitted+by+the+Bureau+of+Land+...' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hjres140' target='_blank' rel='noopener noreferrer'>H.J.Res. 140: Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Land ...</a><br>
 
