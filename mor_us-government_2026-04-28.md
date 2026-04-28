@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-04-27 - EVE"
-date = "2026-04-27"
+title = "US Government - 2026-04-28 - MOR"
+date = "2026-04-28"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -80,13 +80,13 @@ tags = [
 
 <input type='checkbox' name='article_33' value='https://www.dailypress.senate.gov/congress/bills/119/hr6431' /> 33 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+6431%3A+New+Opportunities+for+Business+Ownership+and+Self-Sufficiency+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr6431' target='_blank' rel='noopener noreferrer'>H.R. 6431: New Opportunities for Business Ownership and Self-Sufficiency Act</a><br>
 
-<input type='checkbox' name='article_34' value='https://www.dailypress.senate.gov/congress/bills/119/s2296' /> 34 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+2296%3A+National+Defense+Authorization+Act+for+Fiscal+Year+2026' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s2296' target='_blank' rel='noopener noreferrer'>S. 2296: National Defense Authorization Act for Fiscal Year 2026</a><br>
+<input type='checkbox' name='article_34' value='https://www.dailypress.senate.gov/congress/bills/119/hr8307' /> 34 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8307%3A+Responder+and+Recovery+Safety+in+EV+Fires+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8307' target='_blank' rel='noopener noreferrer'>H.R. 8307: Responder and Recovery Safety in EV Fires Act</a><br>
 
-<input type='checkbox' name='article_35' value='https://www.dailypress.senate.gov/congress/bills/119/hr1897' /> 35 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+1897%3A+ESA+Amendments+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr1897' target='_blank' rel='noopener noreferrer'>H.R. 1897: ESA Amendments Act of 2025</a><br>
+<input type='checkbox' name='article_35' value='https://www.dailypress.senate.gov/congress/bills/119/hr8250' /> 35 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8250%3A+Parents+Decide+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8250' target='_blank' rel='noopener noreferrer'>H.R. 8250: Parents Decide Act</a><br>
 
-<input type='checkbox' name='article_36' value='https://www.dailypress.senate.gov/congress/bills/119/hr8250' /> 36 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8250%3A+Parents+Decide+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8250' target='_blank' rel='noopener noreferrer'>H.R. 8250: Parents Decide Act</a><br>
+<input type='checkbox' name='article_36' value='https://www.dailypress.senate.gov/congress/bills/119/hr3648' /> 36 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3648%3A+Transit+Captions+Innovations+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3648' target='_blank' rel='noopener noreferrer'>H.R. 3648: Transit Captions Innovations Act</a><br>
 
-<input type='checkbox' name='article_37' value='https://www.dailypress.senate.gov/congress/bills/119/hjres140' /> 37 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.J.Res.+140%3A+Providing+for+congressional+disapproval+under+chapter+8+of+title+5%2C+United+States+Code%2C+of+the+rule+submitted+by+the+Bureau+of+Land+...' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hjres140' target='_blank' rel='noopener noreferrer'>H.J.Res. 140: Providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the Bureau of Land ...</a><br>
+<input type='checkbox' name='article_37' value='https://www.dailypress.senate.gov/congress/bills/119/hr1897' /> 37 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+1897%3A+ESA+Amendments+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr1897' target='_blank' rel='noopener noreferrer'>H.R. 1897: ESA Amendments Act of 2025</a><br>
 
 <input type='checkbox' name='article_38' value='https://www.dailypress.senate.gov/congress/bills/119/hr25' /> 38 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+25%3A+FairTax+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr25' target='_blank' rel='noopener noreferrer'>H.R. 25: FairTax Act of 2025</a><br>
 
