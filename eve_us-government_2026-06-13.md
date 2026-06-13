@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-06-13 - MOR"
+title = "US Government - 2026-06-13 - EVE"
 date = "2026-06-13"
 description = "US Government news for today"
 tags = [
@@ -50,9 +50,9 @@ tags = [
 
 <input type='checkbox' name='article_18' value='https://www.dailypress.senate.gov/posts/604/2026-06-12_fraud-funding-but-not-fisa' /> 18 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+Legislative+Recap+June+12%2C+2026%3AFraud%2C+Funding%2C+but+not+FISA%C2%BB' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/posts/604/2026-06-12_fraud-funding-but-not-fisa' target='_blank' rel='noopener noreferrer'>Legislative Recap June 12, 2026:Fraud, Funding, but not FISA»</a><br>
 
-<input type='checkbox' name='article_19' value='https://www.dailypress.senate.gov/congress/bills/119/s4615' /> 19 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+4615%3A+Intelligence+Authorization+Act+for+Fiscal+Year+2027' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s4615' target='_blank' rel='noopener noreferrer'>S. 4615: Intelligence Authorization Act for Fiscal Year 2027</a><br>
+<input type='checkbox' name='article_19' value='https://www.dailypress.senate.gov/congress/bills/119/hr9237' /> 19 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+9237%3A+Take+Care+of+America%E2%80%99s+Veterans+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr9237' target='_blank' rel='noopener noreferrer'>H.R. 9237: Take Care of America’s Veterans Act</a><br>
 
-<input type='checkbox' name='article_20' value='https://www.dailypress.senate.gov/congress/bills/119/hr9237' /> 20 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+9237%3A+Take+Care+of+America%E2%80%99s+Veterans+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr9237' target='_blank' rel='noopener noreferrer'>H.R. 9237: Take Care of America’s Veterans Act</a><br>
+<input type='checkbox' name='article_20' value='https://www.dailypress.senate.gov/congress/bills/119/s4615' /> 20 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+4615%3A+Intelligence+Authorization+Act+for+Fiscal+Year+2027' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s4615' target='_blank' rel='noopener noreferrer'>S. 4615: Intelligence Authorization Act for Fiscal Year 2027</a><br>
 
 <input type='checkbox' name='article_21' value='https://www.dailypress.senate.gov/congress/bills/119/hr7296' /> 21 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+7296%3A+SAVE+America+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr7296' target='_blank' rel='noopener noreferrer'>H.R. 7296: SAVE America Act</a><br>
 
