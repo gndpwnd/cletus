@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-06-13 - EVE"
-date = "2026-06-13"
+title = "US Government - 2026-06-14 - MOR"
+date = "2026-06-14"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -52,7 +52,7 @@ tags = [
 
 <input type='checkbox' name='article_19' value='https://www.dailypress.senate.gov/congress/bills/119/hr9237' /> 19 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+9237%3A+Take+Care+of+America%E2%80%99s+Veterans+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr9237' target='_blank' rel='noopener noreferrer'>H.R. 9237: Take Care of America’s Veterans Act</a><br>
 
-<input type='checkbox' name='article_20' value='https://www.dailypress.senate.gov/congress/bills/119/s4615' /> 20 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+4615%3A+Intelligence+Authorization+Act+for+Fiscal+Year+2027' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s4615' target='_blank' rel='noopener noreferrer'>S. 4615: Intelligence Authorization Act for Fiscal Year 2027</a><br>
+<input type='checkbox' name='article_20' value='https://www.dailypress.senate.gov/congress/bills/119/s4744' /> 20 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+4744%3A+Take+Care+of+America%E2%80%99s+Veterans+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s4744' target='_blank' rel='noopener noreferrer'>S. 4744: Take Care of America’s Veterans Act</a><br>
 
 <input type='checkbox' name='article_21' value='https://www.dailypress.senate.gov/congress/bills/119/hr7296' /> 21 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+7296%3A+SAVE+America+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr7296' target='_blank' rel='noopener noreferrer'>H.R. 7296: SAVE America Act</a><br>
 
