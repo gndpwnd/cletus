@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-06-15 - MOR"
+title = "US Intelligence - 2026-06-15 - EVE"
 date = "2026-06-15"
 description = "US Intelligence news for today"
 tags = [
@@ -117,8 +117,6 @@ tags = [
 <input type='checkbox' name='article_529' value='https://www.fbi.gov/news/press-releases/master-of-shadow-fleet-tanker-pleads-guilty-in-dc-for-evading-us-coast-guard-during-weeks-long-pursuit' /> 529 - <a href='https://www.google.com/search?q=www.fbi.gov+Master+of+Shadow+Fleet+Tanker+Pleads+Guilty+in+D.C.+for+Evading+U.S.+Coast+Guard+During+Weeks-Long+Pursuit' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/master-of-shadow-fleet-tanker-pleads-guilty-in-dc-for-evading-us-coast-guard-during-weeks-long-pursuit' target='_blank' rel='noopener noreferrer'>Master of Shadow Fleet Tanker Pleads Guilty in D.C. for Evading U.S. Coast Guard During Weeks-Long Pursuit</a><br>
 
 <input type='checkbox' name='article_530' value='https://www.fbi.gov/news/press-releases/statement-from-fbi-director-patel-on-most-wanted-fraudster-arrest' /> 530 - <a href='https://www.google.com/search?q=www.fbi.gov+Statement+from+FBI+Director+Patel+on+Most+Wanted+Fraudster+Arrest' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/statement-from-fbi-director-patel-on-most-wanted-fraudster-arrest' target='_blank' rel='noopener noreferrer'>Statement from FBI Director Patel on Most Wanted Fraudster Arrest</a><br>
-
-<input type='checkbox' name='article_531' value='https://www.fbi.gov/news/press-releases/former-taliban-commander-sentenced-to-42-years-in-prison-for-hostage-taking-and-providing-material-support-for-acts-of-terrorism-resulting-in-death' /> 531 - <a href='https://www.google.com/search?q=www.fbi.gov+Former+Taliban+Commander+Sentenced+to+42+Years+in+Prison+for+Hostage+Taking+and+Providing+Material+Support+for+Acts+of+Terrorism+Resulting+in+Death' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/former-taliban-commander-sentenced-to-42-years-in-prison-for-hostage-taking-and-providing-material-support-for-acts-of-terrorism-resulting-in-death' target='_blank' rel='noopener noreferrer'>Former Taliban Commander Sentenced to 42 Years in Prison for Hostage Taking and Providing Material Support for Acts of Terrorism Resulting in Death</a><br>
 
 </details>
 
