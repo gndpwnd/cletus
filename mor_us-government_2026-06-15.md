@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-06-14 - EVE"
-date = "2026-06-14"
+title = "US Government - 2026-06-15 - MOR"
+date = "2026-06-15"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -56,9 +56,9 @@ tags = [
 
 <input type='checkbox' name='article_21' value='https://www.dailypress.senate.gov/congress/bills/119/hr7296' /> 21 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+7296%3A+SAVE+America+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr7296' target='_blank' rel='noopener noreferrer'>H.R. 7296: SAVE America Act</a><br>
 
-<input type='checkbox' name='article_22' value='https://www.dailypress.senate.gov/congress/bills/119/hr8800' /> 22 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8800%3A+National+Defense+Authorization+Act+for+Fiscal+Year+2027' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8800' target='_blank' rel='noopener noreferrer'>H.R. 8800: National Defense Authorization Act for Fiscal Year 2027</a><br>
+<input type='checkbox' name='article_22' value='https://www.dailypress.senate.gov/congress/bills/119/hr3633' /> 22 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3633%3A+Digital+Asset+Market+Clarity+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3633' target='_blank' rel='noopener noreferrer'>H.R. 3633: Digital Asset Market Clarity Act</a><br>
 
-<input type='checkbox' name='article_23' value='https://www.dailypress.senate.gov/congress/bills/119/hr3633' /> 23 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3633%3A+Digital+Asset+Market+Clarity+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3633' target='_blank' rel='noopener noreferrer'>H.R. 3633: Digital Asset Market Clarity Act</a><br>
+<input type='checkbox' name='article_23' value='https://www.dailypress.senate.gov/congress/bills/119/hr8800' /> 23 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+8800%3A+National+Defense+Authorization+Act+for+Fiscal+Year+2027' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr8800' target='_blank' rel='noopener noreferrer'>H.R. 8800: National Defense Authorization Act for Fiscal Year 2027</a><br>
 
 <input type='checkbox' name='article_24' value='https://www.dailypress.senate.gov/congress/bills/119/hr25' /> 24 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+25%3A+FairTax+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr25' target='_blank' rel='noopener noreferrer'>H.R. 25: FairTax Act of 2025</a><br>
 
