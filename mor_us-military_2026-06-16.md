@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Military - 2026-06-15 - EVE"
-date = "2026-06-15"
+title = "US Military - 2026-06-16 - MOR"
+date = "2026-06-16"
 description = "US Military news for today"
 tags = [
     "US Military",
@@ -13,6 +13,8 @@ tags = [
 <details>
 <summary>View Articles</summary>
 <br>
+
+<input type='checkbox' name='article_460' value='https://www.16af.af.mil/Newsroom/article/293275/us_army_launches_tell_your_formation_website' /> 460 - <a href='https://www.google.com/search?q=www.16af.af.mil+US+Army+launches+%27Tell+Your+Formation%27+website' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/293275/us_army_launches_tell_your_formation_website' target='_blank' rel='noopener noreferrer'>US Army launches 'Tell Your Formation' website</a><br>
 
 <input type='checkbox' name='article_461' value='https://www.16af.af.mil/Newsroom/article/293192/u_s_army_allies_and_partners_to_expand_drone_and_counter_drone_marketplaces_at_eurosatory_defense_exhibition' /> 461 - <a href='https://www.google.com/search?q=www.16af.af.mil+U.S.+Army%2C+Allies+and+Partners+to+Expand+Drone+and+Counter-Drone+Marketplaces+at+Eurosatory+Defense+Exhibition' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/293192/u_s_army_allies_and_partners_to_expand_drone_and_counter_drone_marketplaces_at_eurosatory_defense_exhibition' target='_blank' rel='noopener noreferrer'>U.S. Army, Allies and Partners to Expand Drone and Counter-Drone Marketplaces at Eurosatory Defense Exhibition</a><br>
 
@@ -59,8 +61,6 @@ tags = [
 <input type='checkbox' name='article_482' value='https://www.16af.af.mil/Newsroom/article/290645/army_announces_winners_of_inaugural_best_drone_warfighter_competition' /> 482 - <a href='https://www.google.com/search?q=www.16af.af.mil+Army+announces+winners+of+inaugural+Best+Drone+Warfighter+Competition' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/290645/army_announces_winners_of_inaugural_best_drone_warfighter_competition' target='_blank' rel='noopener noreferrer'>Army announces winners of inaugural Best Drone Warfighter Competition</a><br>
 
 <input type='checkbox' name='article_483' value='https://www.16af.af.mil/Newsroom/article/290401/4th_infantry_division_showcases_ivy_sting_4_a_leap_forward_in_command_and_control' /> 483 - <a href='https://www.google.com/search?q=www.16af.af.mil+4th+Infantry+Division+showcases+Ivy+Sting+4%3A+A+leap+forward+in+command+and+control' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/290401/4th_infantry_division_showcases_ivy_sting_4_a_leap_forward_in_command_and_control' target='_blank' rel='noopener noreferrer'>4th Infantry Division showcases Ivy Sting 4: A leap forward in command and control</a><br>
-
-<input type='checkbox' name='article_484' value='https://www.16af.af.mil/Newsroom/article/290289/army_announces_upcoming_unit_deployments' /> 484 - <a href='https://www.google.com/search?q=www.16af.af.mil+Army+announces+upcoming+unit+deployments' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/290289/army_announces_upcoming_unit_deployments' target='_blank' rel='noopener noreferrer'>Army announces upcoming unit deployments</a><br>
 
 </details>
 
