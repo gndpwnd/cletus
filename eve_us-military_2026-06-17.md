@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Military - 2026-06-17 - MOR"
+title = "US Military - 2026-06-17 - EVE"
 date = "2026-06-17"
 description = "US Military news for today"
 tags = [
@@ -13,6 +13,8 @@ tags = [
 <details>
 <summary>View Articles</summary>
 <br>
+
+<input type='checkbox' name='article_459' value='https://www.16af.af.mil/Newsroom/article/293346/army_leadership_invites_innovators_to_shape_the_future_of_air_defense_at_lci_industry_day' /> 459 - <a href='https://www.google.com/search?q=www.16af.af.mil+Army+leadership+invites+innovators+to+shape+the+future+of+Air+Defense+at+LCI+Industry+Day' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/293346/army_leadership_invites_innovators_to_shape_the_future_of_air_defense_at_lci_industry_day' target='_blank' rel='noopener noreferrer'>Army leadership invites innovators to shape the future of Air Defense at LCI Industry Day</a><br>
 
 <input type='checkbox' name='article_460' value='https://www.16af.af.mil/Newsroom/article/293293/army_launches_tranche_ii_of_strategic_capital_initiatives_focused_on_energy_resilience' /> 460 - <a href='https://www.google.com/search?q=www.16af.af.mil+Army+launches+tranche+II+of+Strategic+Capital+Initiatives+focused+on+energy+resilience' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/293293/army_launches_tranche_ii_of_strategic_capital_initiatives_focused_on_energy_resilience' target='_blank' rel='noopener noreferrer'>Army launches tranche II of Strategic Capital Initiatives focused on energy resilience</a><br>
 
@@ -59,8 +61,6 @@ tags = [
 <input type='checkbox' name='article_481' value='https://www.16af.af.mil/Newsroom/article/290768/2025_army_acquisition_executive_awards_recognize_excellence_across_the_acquisition_workforce' /> 481 - <a href='https://www.google.com/search?q=www.16af.af.mil+2025+Army+Acquisition+Executive+Awards+recognize+excellence+across+the+acquisition+workforce' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/290768/2025_army_acquisition_executive_awards_recognize_excellence_across_the_acquisition_workforce' target='_blank' rel='noopener noreferrer'>2025 Army Acquisition Executive Awards recognize excellence across the acquisition workforce</a><br>
 
 <input type='checkbox' name='article_482' value='https://www.16af.af.mil/Newsroom/article/290765/army_business_systems_team_earns_top_honors_from_department_of_war_for_ai_innovation' /> 482 - <a href='https://www.google.com/search?q=www.16af.af.mil+Army+business+systems+team+earns+top+honors+from+Department+of+War+for+AI+innovation' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/290765/army_business_systems_team_earns_top_honors_from_department_of_war_for_ai_innovation' target='_blank' rel='noopener noreferrer'>Army business systems team earns top honors from Department of War for AI innovation</a><br>
-
-<input type='checkbox' name='article_483' value='https://www.16af.af.mil/Newsroom/article/290645/army_announces_winners_of_inaugural_best_drone_warfighter_competition' /> 483 - <a href='https://www.google.com/search?q=www.16af.af.mil+Army+announces+winners+of+inaugural+Best+Drone+Warfighter+Competition' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.16af.af.mil/Newsroom/article/290645/army_announces_winners_of_inaugural_best_drone_warfighter_competition' target='_blank' rel='noopener noreferrer'>Army announces winners of inaugural Best Drone Warfighter Competition</a><br>
 
 </details>
 
