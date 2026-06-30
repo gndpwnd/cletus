@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-06-29 - EVE"
-date = "2026-06-29"
+title = "US Government - 2026-06-30 - MOR"
+date = "2026-06-30"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -80,7 +80,7 @@ tags = [
 
 <input type='checkbox' name='article_33' value='https://www.dailypress.senate.gov/congress/bills/119/hr9237' /> 33 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+9237%3A+Take+Care+of+America%E2%80%99s+Veterans+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr9237' target='_blank' rel='noopener noreferrer'>H.R. 9237: Take Care of America’s Veterans Act</a><br>
 
-<input type='checkbox' name='article_34' value='https://www.dailypress.senate.gov/congress/bills/119/hr6644' /> 34 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+6644%3A+21st+Century+ROAD+to+Housing+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr6644' target='_blank' rel='noopener noreferrer'>H.R. 6644: 21st Century ROAD to Housing Act</a><br>
+<input type='checkbox' name='article_34' value='https://www.dailypress.senate.gov/congress/bills/119/hr3633' /> 34 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3633%3A+Digital+Asset+Market+Clarity+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3633' target='_blank' rel='noopener noreferrer'>H.R. 3633: Digital Asset Market Clarity Act</a><br>
 
 <input type='checkbox' name='article_35' value='https://www.dailypress.senate.gov/congress/bills/119/hr25' /> 35 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+25%3A+FairTax+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr25' target='_blank' rel='noopener noreferrer'>H.R. 25: FairTax Act of 2025</a><br>
 

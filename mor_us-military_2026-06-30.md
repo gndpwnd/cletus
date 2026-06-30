@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Military - 2026-06-29 - EVE"
-date = "2026-06-29"
+title = "US Military - 2026-06-30 - MOR"
+date = "2026-06-30"
 description = "US Military news for today"
 tags = [
     "US Military",
