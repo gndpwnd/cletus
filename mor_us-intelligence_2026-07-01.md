@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-06-30 - EVE"
-date = "2026-06-30"
+title = "US Intelligence - 2026-07-01 - MOR"
+date = "2026-07-01"
 description = "US Intelligence news for today"
 tags = [
     "US Intelligence",
@@ -104,17 +104,6 @@ tags = [
 <input type='checkbox' name='article_531' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-new-york-city-arrests-murderers-child-sex-abusers-other-violent-criminal-illegal' /> 531 - <a href='https://www.google.com/search?q=www.nsa.gov+ICE+New+York+City+arrests+murderers%2C+child+sex+abusers%2C+other+violent+criminal+illegal+aliens' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-new-york-city-arrests-murderers-child-sex-abusers-other-violent-criminal-illegal' target='_blank' rel='noopener noreferrer'>ICE New York City arrests murderers, child sex abusers, other violent criminal illegal aliens</a><br>
 
 <input type='checkbox' name='article_532' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/multimedia#useGuide' /> 532 - <a href='https://www.google.com/search?q=www.nsa.gov+Information+on+Photo%2C+Video+and+Audio+Use+Guidelines' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/multimedia#useGuide' target='_blank' rel='noopener noreferrer'>Information on Photo, Video and Audio Use Guidelines</a><br>
-
-</details>
-
-
-# FBI News Releases
-
-<details>
-<summary>View Articles</summary>
-<br>
-
-<input type='checkbox' name='article_533' value='https://www.fbi.gov/news/press-releases/leader-of-antifa-cell-members-in-north-texas-sentenced-to-100-years-in-prison-for-terrorist-attack-on-ice-facility' /> 533 - <a href='https://www.google.com/search?q=www.fbi.gov+Leader+of+Antifa+Cell+Members+in+North+Texas+Sentenced+to+100+Years+in+Prison+for+Terrorist+Attack+on+ICE+Facility' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/leader-of-antifa-cell-members-in-north-texas-sentenced-to-100-years-in-prison-for-terrorist-attack-on-ice-facility' target='_blank' rel='noopener noreferrer'>Leader of Antifa Cell Members in North Texas Sentenced to 100 Years in Prison for Terrorist Attack on ICE Facility</a><br>
 
 </details>
 
