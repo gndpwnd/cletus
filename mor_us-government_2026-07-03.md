@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-07-02 - EVE"
-date = "2026-07-02"
+title = "US Government - 2026-07-03 - MOR"
+date = "2026-07-03"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -654,7 +654,7 @@ tags = [
 
 <input type='checkbox' name='article_320' value='https://www.dailypress.senate.gov/news-events/news/ferc-staff-issues-final-environmental-impact-statement-mississippi-crossing-and' /> 320 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+FERC+Staff+Issues+the+Final+Environmental+Impact+Statement+for+the+Mississippi+Crossing+and+South+System+Expansion+4+Projects+%28CP25-514-000+and+CP25-517-000%29' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/news-events/news/ferc-staff-issues-final-environmental-impact-statement-mississippi-crossing-and' target='_blank' rel='noopener noreferrer'>FERC Staff Issues the Final Environmental Impact Statement for the Mississippi Crossing and South System Expansion 4 Projects (CP25-514-000 and CP25-517-000)</a><br>
 
-<input type='checkbox' name='article_321' value='https://www.dailypress.senate.gov/news-events/events/increasing-market-and-planning-efficiency-through-improved-software-technical' /> 321 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+07JulTechnical+ConferencesIncreasing+Market+and+Planning+Efficiency+through+Improved+Software+Technical+C%E2%80%A611%3A40+AM+-+12%3A00+AM' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/news-events/events/increasing-market-and-planning-efficiency-through-improved-software-technical' target='_blank' rel='noopener noreferrer'>07JulTechnical ConferencesIncreasing Market and Planning Efficiency through Improved Software Technical C…11:40 AM - 12:00 AM</a><br>
+<input type='checkbox' name='article_321' value='https://www.dailypress.senate.gov/news-events/events/increasing-market-and-planning-efficiency-through-improved-software-technical' /> 321 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+07JulTechnical+ConferencesIncreasing+Market+and+Planning+Efficiency+through+Improved+Software+Technical+C%E2%80%A66%3A09+PM+-+12%3A00+AM' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/news-events/events/increasing-market-and-planning-efficiency-through-improved-software-technical' target='_blank' rel='noopener noreferrer'>07JulTechnical ConferencesIncreasing Market and Planning Efficiency through Improved Software Technical C…6:09 PM - 12:00 AM</a><br>
 
 <input type='checkbox' name='article_322' value='https://www.dailypress.senate.gov/news-events/events/evening-scoping-session-upriver-dam-hydroelectric-project-p-3074-013-06162026' /> 322 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+08JulScoping+MeetingEvening+Scoping+Session+for+the+Upriver+Dam+Hydroelectric+Project+%28P-3074-013%29All+Day' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/news-events/events/evening-scoping-session-upriver-dam-hydroelectric-project-p-3074-013-06162026' target='_blank' rel='noopener noreferrer'>08JulScoping MeetingEvening Scoping Session for the Upriver Dam Hydroelectric Project (P-3074-013)All Day</a><br>
 
