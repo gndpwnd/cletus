@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Government - 2026-07-19 - EVE"
-date = "2026-07-19"
+title = "US Government - 2026-07-20 - MOR"
+date = "2026-07-20"
 description = "US Government news for today"
 tags = [
     "US Government",
@@ -104,11 +104,11 @@ tags = [
 
 <input type='checkbox' name='article_90' value='https://www.dailypress.senate.gov/congress/bills/119/hr4541' /> 90 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+4541%3A+EARLY+Act+Reauthorization+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr4541' target='_blank' rel='noopener noreferrer'>H.R. 4541: EARLY Act Reauthorization of 2025</a><br>
 
-<input type='checkbox' name='article_91' value='https://www.dailypress.senate.gov/congress/bills/119/s4931' /> 91 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+4931%3A+End+EPA+Abuse+Act+of+2026' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s4931' target='_blank' rel='noopener noreferrer'>S. 4931: End EPA Abuse Act of 2026</a><br>
+<input type='checkbox' name='article_91' value='https://www.dailypress.senate.gov/congress/bills/119/hr139' /> 91 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+139%3A+Sunshine+Protection+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr139' target='_blank' rel='noopener noreferrer'>H.R. 139: Sunshine Protection Act of 2025</a><br>
 
-<input type='checkbox' name='article_92' value='https://www.dailypress.senate.gov/congress/bills/119/hr139' /> 92 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+139%3A+Sunshine+Protection+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr139' target='_blank' rel='noopener noreferrer'>H.R. 139: Sunshine Protection Act of 2025</a><br>
+<input type='checkbox' name='article_92' value='https://www.dailypress.senate.gov/congress/bills/119/s29' /> 92 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+29%3A+Sunshine+Protection+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s29' target='_blank' rel='noopener noreferrer'>S. 29: Sunshine Protection Act of 2025</a><br>
 
-<input type='checkbox' name='article_93' value='https://www.dailypress.senate.gov/congress/bills/119/s29' /> 93 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+S.+29%3A+Sunshine+Protection+Act+of+2025' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/s29' target='_blank' rel='noopener noreferrer'>S. 29: Sunshine Protection Act of 2025</a><br>
+<input type='checkbox' name='article_93' value='https://www.dailypress.senate.gov/congress/bills/119/hr3633' /> 93 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+3633%3A+Digital+Asset+Market+Clarity+Act' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr3633' target='_blank' rel='noopener noreferrer'>H.R. 3633: Digital Asset Market Clarity Act</a><br>
 
 <input type='checkbox' name='article_94' value='https://www.dailypress.senate.gov/congress/bills/119/hr9638' /> 94 - <a href='https://www.google.com/search?q=www.dailypress.senate.gov+H.R.+9638%3A+Sunshine+for+Our+Kids+Act+of+2026' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.dailypress.senate.gov/congress/bills/119/hr9638' target='_blank' rel='noopener noreferrer'>H.R. 9638: Sunshine for Our Kids Act of 2026</a><br>
 
