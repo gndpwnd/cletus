@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-07-20 - MOR"
+title = "US Intelligence - 2026-07-20 - EVE"
 date = "2026-07-20"
 description = "US Intelligence news for today"
 tags = [
@@ -104,17 +104,6 @@ tags = [
 <input type='checkbox' name='article_43' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/california-man-admits-role-alien-smuggling-scheme-held-migrants-ransom' /> 43 - <a href='https://www.google.com/search?q=www.nsa.gov+California+man+admits+role+in+alien+smuggling+scheme+that+held+migrants+for+ransom' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/california-man-admits-role-alien-smuggling-scheme-held-migrants-ransom' target='_blank' rel='noopener noreferrer'>California man admits role in alien smuggling scheme that held migrants for ransom</a><br>
 
 <input type='checkbox' name='article_44' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/multimedia#useGuide' /> 44 - <a href='https://www.google.com/search?q=www.nsa.gov+Information+on+Photo%2C+Video+and+Audio+Use+Guidelines' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/multimedia#useGuide' target='_blank' rel='noopener noreferrer'>Information on Photo, Video and Audio Use Guidelines</a><br>
-
-</details>
-
-
-# FBI News Releases
-
-<details>
-<summary>View Articles</summary>
-<br>
-
-<input type='checkbox' name='article_45' value='https://www.fbi.gov/news/press-releases/massachusetts-man-convicted-of-violating-us-sanctions-against-iran' /> 45 - <a href='https://www.google.com/search?q=www.fbi.gov+Massachusetts+Man+Convicted+of+Violating+U.S.+Sanctions+Against+Iran' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/massachusetts-man-convicted-of-violating-us-sanctions-against-iran' target='_blank' rel='noopener noreferrer'>Massachusetts Man Convicted of Violating U.S. Sanctions Against Iran</a><br>
 
 </details>
 
