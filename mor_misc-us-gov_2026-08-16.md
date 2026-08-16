@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "Misc US Gov - 2026-08-15 - EVE"
-date = "2026-08-15"
+title = "Misc US Gov - 2026-08-16 - MOR"
+date = "2026-08-16"
 description = "Misc US Gov news for today"
 tags = [
     "Misc US Gov",
