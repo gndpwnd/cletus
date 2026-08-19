@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "Misc US Gov - 2026-08-18 - EVE"
-date = "2026-08-18"
+title = "Misc US Gov - 2026-08-19 - MOR"
+date = "2026-08-19"
 description = "Misc US Gov news for today"
 tags = [
     "Misc US Gov",
@@ -119,11 +119,11 @@ tags = [
 
 <input type='checkbox' name='article_48' value='https://breakingdefense.com/tag/army-cyber-command/feature/SECDEFHegseth' /> 48 - <a href='https://www.google.com/search?q=breakingdefense.com+SECRETARY+OF+WAR+PETE+HEGSETH' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/feature/SECDEFHegseth' target='_blank' rel='noopener noreferrer'>SECRETARY OF WAR PETE HEGSETH</a><br>
 
-<input type='checkbox' name='article_49' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1344088/michael-lee' /> 49 - <a href='https://www.google.com/search?q=breakingdefense.com+Chief+Petty+Officer+Michael+Lee' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1344088/michael-lee' target='_blank' rel='noopener noreferrer'>Chief Petty Officer Michael Lee</a><br>
+<input type='checkbox' name='article_49' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1941854/giselle-nicasio-aguero' /> 49 - <a href='https://www.google.com/search?q=breakingdefense.com+Airman+1st+Class+Giselle+Nicasio-Aguero' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1941854/giselle-nicasio-aguero' target='_blank' rel='noopener noreferrer'>Airman 1st Class Giselle Nicasio-Aguero</a><br>
 
-<input type='checkbox' name='article_50' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1681654/sebastian-rothwyn' /> 50 - <a href='https://www.google.com/search?q=breakingdefense.com+Sgt.+1st+Class+Sebastian+Rothwyn' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1681654/sebastian-rothwyn' target='_blank' rel='noopener noreferrer'>Sgt. 1st Class Sebastian Rothwyn</a><br>
+<input type='checkbox' name='article_50' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1344088/michael-lee' /> 50 - <a href='https://www.google.com/search?q=breakingdefense.com+Chief+Petty+Officer+Michael+Lee' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1344088/michael-lee' target='_blank' rel='noopener noreferrer'>Chief Petty Officer Michael Lee</a><br>
 
-<input type='checkbox' name='article_51' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1818319/nahaku-takahashi' /> 51 - <a href='https://www.google.com/search?q=breakingdefense.com+Airman+1st+Class+Nahaku+Takahashi' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1818319/nahaku-takahashi' target='_blank' rel='noopener noreferrer'>Airman 1st Class Nahaku Takahashi</a><br>
+<input type='checkbox' name='article_51' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1681654/sebastian-rothwyn' /> 51 - <a href='https://www.google.com/search?q=breakingdefense.com+Sgt.+1st+Class+Sebastian+Rothwyn' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1681654/sebastian-rothwyn' target='_blank' rel='noopener noreferrer'>Sgt. 1st Class Sebastian Rothwyn</a><br>
 
 </details>
 
