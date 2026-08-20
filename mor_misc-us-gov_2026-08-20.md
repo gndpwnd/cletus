@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "Misc US Gov - 2026-08-19 - EVE"
-date = "2026-08-19"
+title = "Misc US Gov - 2026-08-20 - MOR"
+date = "2026-08-20"
 description = "Misc US Gov news for today"
 tags = [
     "Misc US Gov",
@@ -115,11 +115,11 @@ tags = [
 
 <input type='checkbox' name='article_46' value='https://breakingdefense.com/tag/army-cyber-command/news/your-navy/2026/08/17/centcom-commander-visits-uss-abraham-lincoln-amid-mental-health-concerns/' /> 46 - <a href='https://www.google.com/search?q=breakingdefense.com+CENTCOM+commander+visits+USS+Abraham+Lincoln+amid+mental+health+concerns' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/news/your-navy/2026/08/17/centcom-commander-visits-uss-abraham-lincoln-amid-mental-health-concerns/' target='_blank' rel='noopener noreferrer'>CENTCOM commander visits USS Abraham Lincoln amid mental health concerns</a><br>
 
-<input type='checkbox' name='article_47' value='https://breakingdefense.com/tag/army-cyber-command/news/your-military/2026/08/11/multiple-uss-abraham-lincoln-sailors-have-tried-to-go-overboard-amid-extended-deployment-families-say/' /> 47 - <a href='https://www.google.com/search?q=breakingdefense.com+Multiple+USS+Abraham+Lincoln+sailors+have+tried+to+go+overboard+amid+extended+deployment%2C+families+say' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/news/your-military/2026/08/11/multiple-uss-abraham-lincoln-sailors-have-tried-to-go-overboard-amid-extended-deployment-families-say/' target='_blank' rel='noopener noreferrer'>Multiple USS Abraham Lincoln sailors have tried to go overboard amid extended deployment, families say</a><br>
+<input type='checkbox' name='article_47' value='https://breakingdefense.com/tag/army-cyber-command/feature/SECDEFHegseth' /> 47 - <a href='https://www.google.com/search?q=breakingdefense.com+SECRETARY+OF+WAR+PETE+HEGSETH' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/feature/SECDEFHegseth' target='_blank' rel='noopener noreferrer'>SECRETARY OF WAR PETE HEGSETH</a><br>
 
-<input type='checkbox' name='article_48' value='https://breakingdefense.com/tag/army-cyber-command/feature/SECDEFHegseth' /> 48 - <a href='https://www.google.com/search?q=breakingdefense.com+SECRETARY+OF+WAR+PETE+HEGSETH' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/feature/SECDEFHegseth' target='_blank' rel='noopener noreferrer'>SECRETARY OF WAR PETE HEGSETH</a><br>
+<input type='checkbox' name='article_48' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1873093/daniel-providakes' /> 48 - <a href='https://www.google.com/search?q=breakingdefense.com+Petty+Officer+2nd+Class+Daniel+Providakes' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1873093/daniel-providakes' target='_blank' rel='noopener noreferrer'>Petty Officer 2nd Class Daniel Providakes</a><br>
 
-<input type='checkbox' name='article_49' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1959210/jabes-hernandez-matias' /> 49 - <a href='https://www.google.com/search?q=breakingdefense.com+Airman+1st+Class+Jabes+Hernandez+Matias' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1959210/jabes-hernandez-matias' target='_blank' rel='noopener noreferrer'>Airman 1st Class Jabes Hernandez Matias</a><br>
+<input type='checkbox' name='article_49' value='https://breakingdefense.com/tag/army-cyber-command/portfolio/1921562/frank-houseton' /> 49 - <a href='https://www.google.com/search?q=breakingdefense.com+Airman+1st+Class+Frank+Houseton' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://breakingdefense.com/tag/army-cyber-command/portfolio/1921562/frank-houseton' target='_blank' rel='noopener noreferrer'>Airman 1st Class Frank Houseton</a><br>
 
 </details>
 
