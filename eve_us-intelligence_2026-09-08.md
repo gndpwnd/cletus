@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-09-08 - MOR"
+title = "US Intelligence - 2026-09-08 - EVE"
 date = "2026-09-08"
 description = "US Intelligence news for today"
 tags = [
@@ -104,19 +104,6 @@ tags = [
 <input type='checkbox' name='article_482' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-boston-arrests-foreign-fugitive-convicted-aggravated-murder' /> 482 - <a href='https://www.google.com/search?q=www.nsa.gov+ICE+Boston+arrests+foreign+fugitive+convicted+of+aggravated+murder' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/news/releases/ice-boston-arrests-foreign-fugitive-convicted-aggravated-murder' target='_blank' rel='noopener noreferrer'>ICE Boston arrests foreign fugitive convicted of aggravated murder</a><br>
 
 <input type='checkbox' name='article_483' value='https://www.nsa.gov/Press-Room/Press-Releases-Statements/multimedia#useGuide' /> 483 - <a href='https://www.google.com/search?q=www.nsa.gov+Information+on+Photo%2C+Video+and+Audio+Use+Guidelines' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.nsa.gov/Press-Room/Press-Releases-Statements/multimedia#useGuide' target='_blank' rel='noopener noreferrer'>Information on Photo, Video and Audio Use Guidelines</a><br>
-
-</details>
-
-
-# FBI News Releases
-
-<details>
-<summary>View Articles</summary>
-<br>
-
-<input type='checkbox' name='article_484' value='https://www.fbi.gov/news/press-releases/justice-department-continues-to-disrupt-hamas-terrorist-financing-schemes-through-seizures-of-cryptocurrency-and-internet-infrastructure' /> 484 - <a href='https://www.google.com/search?q=www.fbi.gov+Justice+Department+Continues+to+Disrupt+Hamas+Terrorist+Financing+Schemes+Through+Seizures+of+Cryptocurrency+and+Internet+Infrastructure' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/justice-department-continues-to-disrupt-hamas-terrorist-financing-schemes-through-seizures-of-cryptocurrency-and-internet-infrastructure' target='_blank' rel='noopener noreferrer'>Justice Department Continues to Disrupt Hamas Terrorist Financing Schemes Through Seizures of Cryptocurrency and Internet Infrastructure</a><br>
-
-<input type='checkbox' name='article_485' value='https://www.fbi.gov/news/press-releases/american-citizen-who-worked-as-an-agent-for-the-prc-sentenced-to-two-years-in-prison' /> 485 - <a href='https://www.google.com/search?q=www.fbi.gov+American+Citizen+who+Worked+as+an+Agent+for+the+PRC+Sentenced+to+Two+Years+in+Prison' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/american-citizen-who-worked-as-an-agent-for-the-prc-sentenced-to-two-years-in-prison' target='_blank' rel='noopener noreferrer'>American Citizen who Worked as an Agent for the PRC Sentenced to Two Years in Prison</a><br>
 
 </details>
 
