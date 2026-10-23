@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-10-23 - EVE"
+title = "US Intelligence - 2026-10-23 - MOR"
 date = "2026-10-23"
 description = "US Intelligence news for today"
 tags = [
