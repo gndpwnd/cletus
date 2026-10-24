@@ -1,7 +1,7 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-10-23 - MOR"
-date = "2026-10-23"
+title = "US Intelligence - 2026-10-24 - EVE"
+date = "2026-10-24"
 description = "US Intelligence news for today"
 tags = [
     "US Intelligence",
@@ -117,8 +117,6 @@ tags = [
 <input type='checkbox' name='article_45' value='https://www.fbi.gov/news/press-releases/maryland-man-convicted-of-187m-medicare-fraud-for-respiratory-testing-scheme-targeting-nursing-homes' /> 45 - <a href='https://www.google.com/search?q=www.fbi.gov+Maryland+Man+Convicted+of+%2418.7+Million+Medicare+Fraud+for+Respiratory+Testing+Scheme+Targeting+Nursing+Homes' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/maryland-man-convicted-of-187m-medicare-fraud-for-respiratory-testing-scheme-targeting-nursing-homes' target='_blank' rel='noopener noreferrer'>Maryland Man Convicted of $18.7 Million Medicare Fraud for Respiratory Testing Scheme Targeting Nursing Homes</a><br>
 
 <input type='checkbox' name='article_46' value='https://www.fbi.gov/news/press-releases/justice-department-announces-results-from-operation-not-forgotten-2026' /> 46 - <a href='https://www.google.com/search?q=www.fbi.gov+Justice+Department+Announces+Results+from+Operation+Not+Forgotten+2026' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/justice-department-announces-results-from-operation-not-forgotten-2026' target='_blank' rel='noopener noreferrer'>Justice Department Announces Results from Operation Not Forgotten 2026</a><br>
-
-<input type='checkbox' name='article_47' value='https://www.fbi.gov/news/press-releases/op-ed-crime-drops-locally-collected-data-drives-national-headlines' /> 47 - <a href='https://www.google.com/search?q=www.fbi.gov+Op-Ed%3A+Crime+Drops%E2%80%94Locally+Collected+Data+Drives+National+Headlines' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/op-ed-crime-drops-locally-collected-data-drives-national-headlines' target='_blank' rel='noopener noreferrer'>Op-Ed: Crime Drops—Locally Collected Data Drives National Headlines</a><br>
 
 </details>
 
