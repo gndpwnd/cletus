@@ -1,6 +1,6 @@
 +++ 
 author = "cletus"
-title = "US Intelligence - 2026-10-27 - EVE"
+title = "US Intelligence - 2026-10-27 - MOR"
 date = "2026-10-27"
 description = "US Intelligence news for today"
 tags = [
@@ -115,8 +115,6 @@ tags = [
 <br>
 
 <input type='checkbox' name='article_45' value='https://www.fbi.gov/news/press-releases/us-government-contractor-arrested-for-allegedly-leaking-national-defense-information' /> 45 - <a href='https://www.google.com/search?q=www.fbi.gov+U.S.+Government+Contractor+Arrested+for+Allegedly+Leaking+National+Defense+Information' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/us-government-contractor-arrested-for-allegedly-leaking-national-defense-information' target='_blank' rel='noopener noreferrer'>U.S. Government Contractor Arrested for Allegedly Leaking National Defense Information</a><br>
-
-<input type='checkbox' name='article_46' value='https://www.fbi.gov/news/press-releases/maryland-man-convicted-of-187m-medicare-fraud-for-respiratory-testing-scheme-targeting-nursing-homes' /> 46 - <a href='https://www.google.com/search?q=www.fbi.gov+Maryland+Man+Convicted+of+%2418.7+Million+Medicare+Fraud+for+Respiratory+Testing+Scheme+Targeting+Nursing+Homes' target='_blank' rel='noopener noreferrer'>Search - </a> <a href='https://12ft.io/https://www.fbi.gov/news/press-releases/maryland-man-convicted-of-187m-medicare-fraud-for-respiratory-testing-scheme-targeting-nursing-homes' target='_blank' rel='noopener noreferrer'>Maryland Man Convicted of $18.7 Million Medicare Fraud for Respiratory Testing Scheme Targeting Nursing Homes</a><br>
 
 </details>
 
